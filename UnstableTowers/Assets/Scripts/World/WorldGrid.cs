@@ -4,16 +4,15 @@ using UnityEngine;
 using UnityEngine.Assertions;
 using System.IO;
 
+
 public class WorldGrid : MonoBehaviour
 {
     public bool heightPerlin;
-    public bool noisePerlin;
 
-    public enum Type { Free, Water, Block, Reactor, Reactor_Pump, Reactror_Control, EnemySpawn, Generate }
+    public enum Type { Free, Water, Block, Reactor, Reactor_Pump, Reactror_Control, EnemySpawner, Generate }
 
     [System.Serializable]
-    public struct Generationinstruction
-    {
+    public struct Generationinstruction {
         public char letter;
         public Type type;
         public GameObject ground;
@@ -42,43 +41,22 @@ public class WorldGrid : MonoBehaviour
     private Dictionary<char, Generationinstruction> instructions = new Dictionary<char, Generationinstruction>();
     public List<List<Node>> world = new List<List<Node>>();
 
+    private EnemyManager enemyManager;
+
     public void initialize(Generationinstruction[] i) {
         foreach (var k in i) { instructions.Add(k.letter, k); }
+        enemyManager = FindObjectOfType<EnemyManager>();
+        Assert.IsNotNull(enemyManager, "WorldGrid was not able to find a enemyManager");
     }
 
-    float getNoise(float nx, float ny) {
-        //https://www.redblobgames.com/maps/terrain-from-noise/
-        float e = 1f * Mathf.PerlinNoise(1 * nx, 1 * ny);
-        e += 0.5f * Mathf.PerlinNoise(2 * nx, 2 * ny);
-        e += 0.25f * Mathf.PerlinNoise(4 * nx, 4 * ny);
-        e = e / (float)(1 + 0.5 + 0.25);
-        var ret = Mathf.Pow(e, 1.51f);
-        Debug.Log(nx + " - " + ny + " -> " + ret);
-        return ret;
-    }
-
-    List<List<char>> getPerlinGeneratedChars(int dimZ, int dimX) {
-        var ret = new List<List<char>>();
-        for (int z = 0; z < dimZ; ++z) {
-            var rX = new List<char>();
-            for (int x = 0; x < dimX; ++x) {
-                var sample = getNoise((((float)x) / ((float)dimX)), (((float)z) / ((float)dimZ)));
-                if (sample > 0.31) { rX.Add('B'); } else { rX.Add('0'); }
-                //rX.Add('0');
-            }
-            ret.Add(rX);
-        }
-        return ret;
-    }
-
-    int isB(List<List<char>> l, int x, int z) {
+    private int isB(List<List<char>> l, int x, int z) {
         if(x > 0 && x < l.Count && z > 0 && z < l[x].Count && l[x][z] == 'B') {
             return 1;
         }
         return 0;
     }
 
-    List<List<char>> getGeneratedChars(int dimZ, int dimX) {
+    private List<List<char>> getGeneratedChars(int dimZ, int dimX) {
         float seedRate = 0.08f;
         float clusterRate = 0.2f;
         var ret = new List<List<char>>();
@@ -105,7 +83,7 @@ public class WorldGrid : MonoBehaviour
         return ret;
     }
 
-    List<List<char>> getGeneratedWorldChars(string s, int ex) {
+    private List<List<char>> getGeneratedWorldChars(string s, int ex) {
         var retLines = new List<List<char>>();
         using (StringReader reader = new StringReader(s)) {
             string line;
@@ -117,12 +95,7 @@ public class WorldGrid : MonoBehaviour
                     } else if (c == 'G') {
                         //Short check if the Line is 'pure'
                         foreach (char g in line) { Assert.AreEqual('G', g); }
-                        List<List<char>> gen;
-                        if (noisePerlin) {
-                            gen = getPerlinGeneratedChars(ex, line.Length);
-                        } else {
-                            gen = getGeneratedChars(ex, line.Length);
-                        }
+                        var gen = getGeneratedChars(ex, line.Length);
                         foreach (var k in gen) { retLines.Add(k); }
                         break;
                     } else {
@@ -135,6 +108,17 @@ public class WorldGrid : MonoBehaviour
             }
         }
         return retLines;
+    }
+
+    private void registerNode(Node n) {
+        switch(n.type) {
+            case Type.EnemySpawner:
+                enemyManager.registerSpawner(n.structure.GetComponent<EnemySpawner>());
+                break;
+            default:
+                //Nothing
+                break;
+        }
     }
 
     private void generateWorld(List<List<char>> chars) {
@@ -154,6 +138,8 @@ public class WorldGrid : MonoBehaviour
                 //Add the Block and|or structure
                 if (instruction.ground) { node.ground = Instantiate(instruction.ground, empty.transform); }
                 if (instruction.structure) { node.structure = Instantiate(instruction.structure, empty.transform); }
+                //Is the Node required to register by a Manager?
+                registerNode(node);
                 //Add the Node to the row
                 nodeRow.Add(node);
                 ++xc;

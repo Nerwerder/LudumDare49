@@ -24,9 +24,4 @@ public class WorldGenerator : MonoBehaviour
         grid.initialize(instructions);
         grid.generateGridFromString(worldGenInstruction.text, yOffset, expansion);
     }
-
-    void Update()
-    {
-        
-    }
 }
