@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 6410067387659827284}
   - component: {fileID: 6410067387659827285}
   - component: {fileID: 6410067387659827286}
+  - component: {fileID: 1678641169181601283}
   m_Layer: 0
   m_Name: Reactor
   m_TagString: Untagged
@@ -96,3 +97,15 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1678641169181601283
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6410067387659827287}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d054b1c4364d794bb1624f13b032a2b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
