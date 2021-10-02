@@ -15,6 +15,7 @@ public class WorldGenerator : MonoBehaviour
     //WORKAROUND: the only reason for this Array is to display/manipulate the onctent in the Inspector
     public WorldGrid.Generationinstruction[] instructions;
     private WorldGrid grid;
+
     void Start()
     {
         Assert.IsFalse(instructions.Length == 0);

@@ -47,6 +47,7 @@ MonoBehaviour:
   enemies:
   - prefab: {fileID: 7880553152612670045, guid: a4640364087df7345824f6e3234ac1a5, type: 3}
     cost: 2
+  enemyParent: {fileID: 1832603389}
   instantFirstWave: 1
   timeBetweenWaves: 15
   timeMultiplier: 1.1
@@ -167,7 +168,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4743790306566733909}
+  - component: {fileID: 8825330048043310218}
   - component: {fileID: 4743790306566733898}
+  - component: {fileID: 265131503}
   m_Layer: 0
   m_Name: WorldManager
   m_TagString: Untagged
@@ -190,6 +193,18 @@ Transform:
   m_Father: {fileID: 4743790305103542335}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8825330048043310218
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4743790306566733908}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37f7bd67c7df4214cb7432c942fab6ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &4743790306566733898
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -234,3 +249,15 @@ MonoBehaviour:
     type: 6
     ground: {fileID: 3939723971635339815, guid: 2205cdc94d7fef2419d39f627ea289d6, type: 3}
     structure: {fileID: 4987275945122868482, guid: 9a65960d42eaa484a85b97e007fbcbdc, type: 3}
+--- !u!114 &265131503
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4743790306566733908}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d56dabfecd53e1a428db697807b1e2d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -8,45 +8,28 @@ using System.IO;
 public class WorldGrid : MonoBehaviour
 {
     public bool heightPerlin;
-
-    public enum Type { Free, Water, Block, Reactor, Reactor_Pump, Reactror_Control, EnemySpawner, Generate }
-
     [System.Serializable]
     public struct Generationinstruction {
         public char letter;
-        public Type type;
+        public NodeType type;
         public GameObject ground;
         public GameObject structure;
     }
 
-    public struct Node
-    {
-        public Type type { get; }
-        //Network
-        public GameObject empty { get; }
-        public List<GameObject> neighbors { get; set; } //Required for A*
-        //GO
-        public GameObject ground { get; set; }
-        public GameObject structure { get; set; }
-        public Node(Type t, GameObject e) {
-            type = t;
-            empty = e;
-            neighbors = new List<GameObject>();
-            ground = null;
-            structure = null;
-        }
-    }
-
     //WORKAROUND: the only reason for this Array is to display/manipulate the onctent in the Inspector
     private Dictionary<char, Generationinstruction> instructions = new Dictionary<char, Generationinstruction>();
-    public List<List<Node>> world = new List<List<Node>>();
+    public List<List<WorldNode>> world;
 
     private EnemyManager enemyManager;
+    private WorldManager worldManager;
 
     public void initialize(Generationinstruction[] i) {
+        world = new List<List<WorldNode>>();
         foreach (var k in i) { instructions.Add(k.letter, k); }
         enemyManager = FindObjectOfType<EnemyManager>();
-        Assert.IsNotNull(enemyManager, "WorldGrid was not able to find a enemyManager");
+        Assert.IsNotNull(enemyManager, "WorldGrid was not able to find the EnemyManager");
+        worldManager = FindObjectOfType<WorldManager>();
+        Assert.IsNotNull(worldManager, "WorldGrid was not able to find the WorldManager");
     }
 
     private int isB(List<List<char>> l, int x, int z) {
@@ -110,10 +93,16 @@ public class WorldGrid : MonoBehaviour
         return retLines;
     }
 
-    private void registerNode(Node n) {
+    private void registerNode(WorldNode n) {
         switch(n.type) {
-            case Type.EnemySpawner:
-                enemyManager.registerSpawner(n.structure.GetComponent<EnemySpawner>());
+            case NodeType.EnemySpawner:
+                var spawner = n.structure.GetComponent<EnemySpawner>();
+                Assert.IsNotNull(spawner);
+                spawner.initialize(n);
+                enemyManager.registerSpawner(spawner);
+                break;
+            case NodeType.Reactor:
+                worldManager.reactorNode = n;
                 break;
             default:
                 //Nothing
@@ -122,10 +111,11 @@ public class WorldGrid : MonoBehaviour
     }
 
     private void generateWorld(List<List<char>> chars) {
+        int nodeID = 0;
         int zc = 0;
         foreach (var row in chars) {
             int xc = 0;
-            List<Node> nodeRow = new List<Node>();
+            List<WorldNode> nodeRow = new List<WorldNode>();
             foreach (var type in row) {
                 Assert.IsTrue(instructions.ContainsKey(type), "Unknown instruction?");
                 var instruction = instructions[type];
@@ -134,7 +124,7 @@ public class WorldGrid : MonoBehaviour
                 empty.transform.parent = transform;
                 empty.transform.position = new Vector3(zc, 0, xc);
                 //Create the Node
-                Node node = new Node(instruction.type, empty);
+                WorldNode node = new WorldNode(nodeID++, instruction.type, empty, xc, zc);;
                 //Add the Block and|or structure
                 if (instruction.ground) { node.ground = Instantiate(instruction.ground, empty.transform); }
                 if (instruction.structure) { node.structure = Instantiate(instruction.structure, empty.transform); }
@@ -157,7 +147,7 @@ public class WorldGrid : MonoBehaviour
                 var p = node.empty.transform.position;
                 var px = ((float)p.x) / ((float)xLen);
                 var pz = ((float)p.z) / ((float)zLen);
-                float sample = 0f;
+                float sample;
                 if (heightPerlin) {
                     sample = Mathf.PerlinNoise(px, pz) * 5;
                 } else {
@@ -168,8 +158,8 @@ public class WorldGrid : MonoBehaviour
         }
     }
 
-    private void unifyOffset(Type t, float off = 0f) {
-        List<Node> nodes = new List<Node>();
+    private void unifyOffset(NodeType t, float off = 0f) {
+        List<WorldNode> nodes = new List<WorldNode>();
         float offset = 0f;
         foreach (var row in world) {
             foreach (var node in row) {
@@ -187,6 +177,26 @@ public class WorldGrid : MonoBehaviour
         }
     }
 
+    private void addRelPosNode(List<WorldNode> nodes, int zO, int xO) {
+        if(zO >= 0 && zO < world.Count && xO >= 0 && xO < world[zO].Count) {
+            nodes.Add(world[zO][xO]);
+        }
+    }
+
+    /// <summary>
+    /// Iterate over all Nodes and add the 4 neigboard Nodes to the List
+    /// </summary>
+    private void registerNeighbors() {
+        foreach(var row in world) {
+            foreach(var node in row) {
+                addRelPosNode(node.neighbors, node.z+1, node.x);
+                addRelPosNode(node.neighbors, node.z-1, node.x);
+                addRelPosNode(node.neighbors, node.z, node.x+1);
+                addRelPosNode(node.neighbors, node.z, node.x-1);
+            }
+        }
+    }
+
     /// <summary>
     /// Generate a World from a Given String containing multiple lines and known symbols
     /// </summary>
@@ -197,7 +207,8 @@ public class WorldGrid : MonoBehaviour
         var chars = getGeneratedWorldChars(s, e);
         generateWorld(chars);
         offsetWorld(y);
-        unifyOffset(Type.Water, 0.2f);
-        unifyOffset(Type.Reactor);
+        unifyOffset(NodeType.Water, 0.2f);
+        unifyOffset(NodeType.Reactor);
+        registerNeighbors();
     }
 }
