@@ -10,8 +10,12 @@ public class Enemy : MonoBehaviour
     private float speed;
     public float heightOffset;
     public float nodeDistance;
+    public float cost;
+    public int loot;
+    public int damage;
     private WorldPath path = null;
     private EnemyManager enemyManager;
+    private WorldManager worldManager;
     private int pathIndex;
 
     private Vector3 GetDirectionTo(WorldNode node) {
@@ -20,6 +24,7 @@ public class Enemy : MonoBehaviour
     }
 
     private void Die() {
+        worldManager.metal += loot;
         Destroy(gameObject);
         enemyManager.DeRegisterEnemy(this);
     }
@@ -42,6 +47,10 @@ public class Enemy : MonoBehaviour
             if(pathIndex < path.nodes.Count) {
                 direction = GetDirectionTo(path.nodes[pathIndex]);
             } else {
+                var s = path.GetEnd().structure;
+                if(s != null) {
+                    s.GetComponent<Structure>().Attack(damage);
+                }
                 Die();
             }
         }
@@ -49,11 +58,12 @@ public class Enemy : MonoBehaviour
         this.transform.Translate(direction, Space.World);
     }
 
-    public void Initialize (EnemyManager _e, WorldPath _p) {
+    public void Initialize (WorldManager _w, EnemyManager _e, WorldPath _p) {
         speed = Random.Range(minSpeed, maxSpeed);
         pathIndex = 1;  //Spawner itself is on 0
         path = _p;
         enemyManager = _e;
+        worldManager = _w;
         enemyManager.RegisterEnemy(this);
     }
 }

@@ -22,6 +22,7 @@ public class WorldGrid : MonoBehaviour
 
     private EnemyManager enemyManager;
     private WorldManager worldManager;
+    private StructureManager structureManager;
 
     public void initialize(Generationinstruction[] i) {
         world = new List<List<WorldNode>>();
@@ -30,6 +31,8 @@ public class WorldGrid : MonoBehaviour
         Assert.IsNotNull(enemyManager, "WorldGrid was not able to find the EnemyManager");
         worldManager = FindObjectOfType<WorldManager>();
         Assert.IsNotNull(worldManager, "WorldGrid was not able to find the WorldManager");
+        structureManager = FindObjectOfType<StructureManager>();
+        Assert.IsNotNull(structureManager, "WorldGrid was not able to find the StructureManager");
     }
 
     private int isB(List<List<char>> l, int x, int z) {
@@ -100,9 +103,6 @@ public class WorldGrid : MonoBehaviour
                 Assert.IsNotNull(spawner);
                 spawner.Initialize(n);
                 enemyManager.RegisterSpawner(spawner);
-                break;
-            case NodeType.Reactor:
-                worldManager.reactorNode = n;
                 break;
             default:
                 //Nothing
@@ -202,6 +202,44 @@ public class WorldGrid : MonoBehaviour
     }
 
     /// <summary>
+    /// Add Buildings that need more than one Node
+    /// </summary>
+    private void addOversizedBuildings() {
+        //Add the reactor
+        var rNodes = new List<WorldNode>();
+        foreach(var row in world) {
+            foreach(var n in row) {
+                if(n.GetNodeType() == NodeType.Reactor) {
+                    rNodes.Add(n);
+                }
+            }
+        }
+        Assert.IsTrue(rNodes.Count == 9);
+
+        //Average the Position
+        float aX = 0f;
+        float aZ = 0f;
+        foreach(var n in rNodes) {
+            aX += n.empty.transform.position.x;
+            aZ += n.empty.transform.position.z;
+        }
+        aX /= rNodes.Count;
+        aZ /= rNodes.Count;
+
+        //Get parent Node
+        var s = structureManager.getStructure(StructureManager.KnownStructures.Reactor);
+        var structure = Instantiate(s, rNodes[4].transform);
+        structure.transform.position += Vector3.up;
+
+        foreach (var n in rNodes) {
+            n.structure = structure;
+        }
+
+        worldManager.reactorNode = rNodes[1];
+        worldManager.reactor = structure.GetComponent<Reactor>();
+    }
+
+    /// <summary>
     /// Generate a World from a Given String containing multiple lines and known symbols
     /// </summary>
     /// <param name="s">Input String containing multiple lines of known symbols</param>
@@ -214,6 +252,7 @@ public class WorldGrid : MonoBehaviour
         offsetWorld(y);
         unifyOffset(NodeType.Water, 0.2f);
         unifyOffset(NodeType.Reactor);
+        addOversizedBuildings();
         registerNeighbors();
     }
 }
