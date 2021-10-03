@@ -22,7 +22,7 @@ public class EnemyManager : MonoBehaviour
     public float pointsPerWave;
     public float pointMultiplier;
 
-    private float spawnTimer = 0f;
+    public float spawnTimer = 0f;
 
     public void registerSpawner(EnemySpawner s) {
         spawners.Add(s);
@@ -58,6 +58,8 @@ public class EnemyManager : MonoBehaviour
         Assert.IsNotNull(enemyParent, "EnemyManager: no enemyParent is set");
         if (!instantFirstWave) {
             spawnTimer = timeBetweenWaves;
+        } else {
+            spawnTimer = 1f;
         }
     }
 

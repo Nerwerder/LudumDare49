@@ -306,6 +306,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 339281370, guid: 140c4bedeca65964d85828843f54fd34, type: 3}
+      propertyPath: timeMultiplier
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 339281370, guid: 140c4bedeca65964d85828843f54fd34, type: 3}
+      propertyPath: timeBetweenWaves
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 4743790305103542334, guid: 140c4bedeca65964d85828843f54fd34, type: 3}
       propertyPath: m_Name
       value: GameManager
@@ -353,6 +361,10 @@ PrefabInstance:
     - target: {fileID: 4743790305103542335, guid: 140c4bedeca65964d85828843f54fd34, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4743790306566733898, guid: 140c4bedeca65964d85828843f54fd34, type: 3}
+      propertyPath: wayPointYOffset
+      value: 0.9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 140c4bedeca65964d85828843f54fd34, type: 3}

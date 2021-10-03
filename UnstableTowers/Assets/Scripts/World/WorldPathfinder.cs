@@ -5,34 +5,61 @@ using UnityEngine.Assertions;
 
 public class WorldPathfinder : MonoBehaviour
 {
+    /// <summary>
+    /// Helper Class that increases A* performance by improving the "open.contains" check by a lot.
+    /// </summary>
+    public class OpenNodes
+    {
+        public List<WorldNode> nodes { get; set; }
+        public List<int> ids { get; set; }  //Better performance for "contains"
+        public OpenNodes() {
+            nodes = new List<WorldNode>();
+            ids = new List<int>();
+        }
+        public void Add(WorldNode n) {
+            nodes.Add(n);
+            ids.Add(n.id);
+        }
+        public void Remove(WorldNode n) {
+            nodes.Remove(n);
+            ids.Remove(n.id);
+        }
+        public bool Contains(int id) {
+            return ids.Contains(id);
+        }
+        public int Count() {
+            return nodes.Count;
+        }
+        public WorldNode this[int i] {
+            get { return nodes[i]; }
+        }
+    }
+
     public WorldPath findPathFromTo(WorldNode start, WorldNode end) {
-        var path = new WorldPath();
+        WorldPath path = null;
 
         //A*
-        List<WorldNode> open = new List<WorldNode>();
-        List<int> openIDs = new List<int>();    //Better performance for "contains"
+        OpenNodes open = new OpenNodes();
         List<int> closed = new List<int>();
         open.Add(start);
-        openIDs.Add(start.id);
         start.parent = null;
-        while (open.Count != 0) {
+        while (open.Count() != 0) {
             var cNode = open[0];
             if(cNode.id == end.id) {
-                while(cNode.parent !=  null) {
+                path = new WorldPath();
+                while (cNode.parent !=  null) {
                     path.nodes.Add(cNode);
                     cNode = cNode.parent;
                 }
                 break;
             }
             foreach(var n in cNode.neighbors) {
-                if(((n.type == NodeType.Free) || (n.id == end.id)) && !(closed.Contains(n.id)) && !(openIDs.Contains(n.id))) {
+                if(((n.type == NodeType.Free) || (n.id == end.id)) && !(closed.Contains(n.id)) && !(open.Contains(n.id))) {
                     n.parent = cNode;
                     open.Add(n);
-                    openIDs.Add(n.id);
                 }
             }
             open.Remove(cNode);
-            openIDs.Remove(cNode.id);
             closed.Add(cNode.id);
             if(closed.Count > 10000) {
                 Assert.IsTrue(false, "This is the deadlock prevention");
@@ -40,11 +67,9 @@ public class WorldPathfinder : MonoBehaviour
             }
         }
 
-        Assert.IsFalse(path.nodes.Count == 0, "No PATH to target found");
-        foreach(var p in path.nodes) {
-            p.ground.GetComponent<Renderer>().material.color = Color.cyan;
+        if(path != null) {
+            path.finalize();
         }
-
         return path;
     }
 }
