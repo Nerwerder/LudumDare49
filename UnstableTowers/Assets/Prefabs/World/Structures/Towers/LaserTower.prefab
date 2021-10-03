@@ -294,3 +294,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d12b79c97683a44790db20d3351281a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hp: 50
+  range: 6
+  damage: 20
+  dish: {fileID: 1391720424834467814}

@@ -401,6 +401,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 339281370, guid: 140c4bedeca65964d85828843f54fd34, type: 3}
+      propertyPath: pointsPerWave
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 339281370, guid: 140c4bedeca65964d85828843f54fd34, type: 3}
+      propertyPath: enemyInfos.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 339281370, guid: 140c4bedeca65964d85828843f54fd34, type: 3}
+      propertyPath: enemyInfos.Array.data[0].cost
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 339281370, guid: 140c4bedeca65964d85828843f54fd34, type: 3}
+      propertyPath: enemyInfos.Array.data[0].prefab
+      value: 
+      objectReference: {fileID: 7880553152612670045, guid: a4640364087df7345824f6e3234ac1a5, type: 3}
     - target: {fileID: 4743790305103542334, guid: 140c4bedeca65964d85828843f54fd34, type: 3}
       propertyPath: m_Name
       value: GameManager
@@ -469,6 +485,14 @@ PrefabInstance:
     - target: {fileID: 267998975, guid: 8547842992c426a4fac54e76f0c4c3d8, type: 3}
       propertyPath: m_LocalPosition.y
       value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 3042111096916903284, guid: 8547842992c426a4fac54e76f0c4c3d8, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 45
+      objectReference: {fileID: 0}
+    - target: {fileID: 3042111096916903284, guid: 8547842992c426a4fac54e76f0c4c3d8, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 8458268991356595541, guid: 8547842992c426a4fac54e76f0c4c3d8, type: 3}
       propertyPath: m_Name

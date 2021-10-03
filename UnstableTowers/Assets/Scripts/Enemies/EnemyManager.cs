@@ -13,7 +13,8 @@ public class EnemyManager : MonoBehaviour
     }
 
     private List<EnemySpawner> spawners = new List<EnemySpawner>();
-    public List<EnemyInfo> enemies;
+    private List<Enemy> enemies = new List<Enemy>();
+    public List<EnemyInfo> enemyInfos;
 
     public GameObject enemyParent;
     public bool instantFirstWave;
@@ -26,8 +27,26 @@ public class EnemyManager : MonoBehaviour
 
     public float spawnTimer = 0f;
 
-    public void registerSpawner(EnemySpawner s) {
+    public void RegisterSpawner(EnemySpawner s) {
+        s.enemyManager = this;
         spawners.Add(s);
+    }
+
+    public void RegisterEnemy(Enemy e) {
+        enemies.Add(e);
+    }
+
+    public void DeRegisterEnemy(Enemy e) {
+        enemies.Remove(e);
+    }
+
+    public Enemy GetEnemyInRange(Vector3 _p, float _r) {
+        foreach(var e in enemies) {
+            if((e.transform.position - _p).magnitude <= _r) {
+                return e;
+            }
+        }
+        return null;
     }
 
     public void spawnEnemies() {
@@ -52,7 +71,7 @@ public class EnemyManager : MonoBehaviour
                 points = Random.Range(0f, tmpPoints);
                 tmpPoints -= points;
             }
-            spawner.SpawnEnemies(enemyParent.transform, points, enemies);
+            spawner.SpawnEnemies(enemyParent.transform, points, enemyInfos);
         }
     }
 

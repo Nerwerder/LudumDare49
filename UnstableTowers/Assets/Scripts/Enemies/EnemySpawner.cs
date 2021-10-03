@@ -9,6 +9,7 @@ public class EnemySpawner : MonoBehaviour
     private WorldPathfinder pathfinder;
     private WorldManager manager;
     private WorldPath pathToReactor;
+    public EnemyManager enemyManager { get; set; }
 
     public void Initialize(WorldNode _n) {
         node = _n;
@@ -16,13 +17,12 @@ public class EnemySpawner : MonoBehaviour
 
     public void SpawnEnemies(Transform parent, float points, List<EnemyManager.EnemyInfo> info) {
         List<EnemyManager.EnemyInfo> tmpInfo = new List<EnemyManager.EnemyInfo>(info);
-
         //Select Random Enemies to spawn, as long a there are enough Points for it
         while (points > 0 && tmpInfo.Count > 0) {
             var idx = Random.Range(0, tmpInfo.Count);
             if (tmpInfo[idx].cost <= points) {
                 var enemy = Instantiate(info[idx].prefab, parent);
-                enemy.GetComponent<Enemy>().initialize(pathToReactor);
+                enemy.GetComponent<Enemy>().Initialize(enemyManager, pathToReactor);
                 enemy.transform.position = transform.position + Vector3.up; //TODO: Randomize 
                 points -= tmpInfo[idx].cost;
             } else {

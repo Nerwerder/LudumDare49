@@ -99,7 +99,7 @@ public class WorldGrid : MonoBehaviour
                 var spawner = n.structure.GetComponent<EnemySpawner>();
                 Assert.IsNotNull(spawner);
                 spawner.Initialize(n);
-                enemyManager.registerSpawner(spawner);
+                enemyManager.RegisterSpawner(spawner);
                 break;
             case NodeType.Reactor:
                 worldManager.reactorNode = n;
