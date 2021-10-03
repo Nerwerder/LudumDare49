@@ -1,12 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Assertions;
 
-public enum NodeType { Free, Water, Block, Reactor, Reactor_Pump, Reactror_Control, EnemySpawner, Generate }
+public enum NodeType { Undefined, Free, Water, Block, Reactor, Reactor_Pump, Reactror_Control, EnemySpawner, Generate, Tower }
 public class WorldNode : MonoBehaviour
 {
     public int id { get; set; } //WARNING: id has to be guaranted unique
-    public NodeType type { get; set; }
+    private NodeType type = NodeType.Undefined;
     //Index
     public int x { get; set; }
     public int z { get; set; }
@@ -31,5 +32,21 @@ public class WorldNode : MonoBehaviour
         structure = null;
         x = _x;
         z = _z;
+    }
+    public NodeType GetNodeType() { return type; }
+    public void SetNodeType(NodeType nt) {
+        var oldType = type;
+        type = nt;
+        //Inform every Path about the change (this Node is not passable anymore)
+        if (oldType == NodeType.Free) {
+            //We create a tmpPaths object, because the paths will unregister themselves in the Update
+            List<WorldPath> tmpPaths = new List<WorldPath>(paths);
+            foreach (var p in tmpPaths) {
+                p.Update();
+            }
+        }
+        if (nt != NodeType.Free) {
+            Assert.IsTrue(paths.Count == 0);
+        }
     }
 }

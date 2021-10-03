@@ -52,7 +52,7 @@ public class EnemyManager : MonoBehaviour
                 points = Random.Range(0f, tmpPoints);
                 tmpPoints -= points;
             }
-            spawner.spawnEnemies(enemyParent.transform, points, enemies);
+            spawner.SpawnEnemies(enemyParent.transform, points, enemies);
         }
     }
 
