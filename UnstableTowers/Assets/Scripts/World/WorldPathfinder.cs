@@ -35,41 +35,56 @@ public class WorldPathfinder : MonoBehaviour
         }
     }
 
-    public WorldPath findPathFromTo(WorldNode start, WorldNode end) {
-        WorldPath path = null;
-
+    private List<WorldNode> AStar(WorldNode start, WorldNode end) {
         //A*
+        List <WorldNode> ret = new List<WorldNode>();
         OpenNodes open = new OpenNodes();
         List<int> closed = new List<int>();
         open.Add(start);
         start.parent = null;
         while (open.Count() != 0) {
             var cNode = open[0];
-            if(cNode.id == end.id) {
-                path = new WorldPath();
-                while (cNode.parent !=  null) {
-                    path.nodes.Add(cNode);
+            if (cNode.id == end.id) {
+                while (cNode != null) {
+                    ret.Add(cNode);
                     cNode = cNode.parent;
                 }
-                break;
+                return ret;
             }
-            foreach(var n in cNode.neighbors) {
-                if(((n.type == NodeType.Free) || (n.id == end.id)) && !(closed.Contains(n.id)) && !(open.Contains(n.id))) {
+            foreach (var n in cNode.neighbors) {
+                if (((n.GetNodeType() == NodeType.Free) || (n.id == end.id)) && !(closed.Contains(n.id)) && !(open.Contains(n.id))) {
                     n.parent = cNode;
                     open.Add(n);
                 }
             }
             open.Remove(cNode);
             closed.Add(cNode.id);
-            if(closed.Count > 10000) {
+            if (closed.Count > 10000) {
                 Assert.IsTrue(false, "This is the deadlock prevention");
                 break;
             }
         }
+        return ret;
+    }
 
-        if(path != null) {
-            path.finalize();
+    public WorldPath FindPathFromTo(WorldNode start, WorldNode end) {
+        var nodes = AStar(start, end);
+        if(nodes.Count > 0) {
+            //Listener: Path knows Pathfinder so it can ask for a update if something changes
+            WorldPath path = new WorldPath(this);
+            path.Prepare(nodes);
+            return path;
         }
-        return path;
+        Assert.IsTrue(false, "No Path found");
+        return null;
+    }
+
+    public void UpdatePath(WorldPath path) {
+        var nodes = AStar(path.GetStart(), path.GetEnd());
+        if(nodes.Count > 0) {
+            path.Prepare(nodes);
+        } else {
+            Assert.IsTrue(false, "No Path found");
+        }
     }
 }

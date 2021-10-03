@@ -10,11 +10,11 @@ public class EnemySpawner : MonoBehaviour
     private WorldManager manager;
     private WorldPath pathToReactor;
 
-    public void initialize(WorldNode _n) {
+    public void Initialize(WorldNode _n) {
         node = _n;
     }
 
-    public void spawnEnemies(Transform parent, float points, List<EnemyManager.EnemyInfo> info) {
+    public void SpawnEnemies(Transform parent, float points, List<EnemyManager.EnemyInfo> info) {
         List<EnemyManager.EnemyInfo> tmpInfo = new List<EnemyManager.EnemyInfo>(info);
 
         //Select Random Enemies to spawn, as long a there are enough Points for it
@@ -37,7 +37,7 @@ public class EnemySpawner : MonoBehaviour
         Assert.IsNotNull(pathfinder);
         manager = FindObjectOfType<WorldManager>();
         Assert.IsNotNull(manager);
-
-        pathToReactor = pathfinder.findPathFromTo(node, manager.reactorNode);
+        Assert.IsNotNull(node, "Initialize was not called");
+        pathToReactor = pathfinder.FindPathFromTo(node, manager.reactorNode);
     }
 }

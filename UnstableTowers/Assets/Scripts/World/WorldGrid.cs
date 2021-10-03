@@ -94,11 +94,11 @@ public class WorldGrid : MonoBehaviour
     }
 
     private void registerNode(WorldNode n) {
-        switch(n.type) {
+        switch(n.GetNodeType()) {
             case NodeType.EnemySpawner:
                 var spawner = n.structure.GetComponent<EnemySpawner>();
                 Assert.IsNotNull(spawner);
-                spawner.initialize(n);
+                spawner.Initialize(n);
                 enemyManager.registerSpawner(spawner);
                 break;
             case NodeType.Reactor:
@@ -122,7 +122,7 @@ public class WorldGrid : MonoBehaviour
                 //Create the Empty
                 GameObject empty = new GameObject(zc + "_" + xc);
                 empty.transform.parent = transform;
-                empty.transform.position = new Vector3(zc, 0, xc);
+                empty.transform.position = new Vector3((zc*2), 0, (xc*2));
                 //Create the WayPoint
                 GameObject wayPoint = new GameObject("wayPoint" + zc + "_" + xc);
                 wayPoint.transform.parent = empty.transform;
@@ -168,7 +168,7 @@ public class WorldGrid : MonoBehaviour
         float offset = 0f;
         foreach (var row in world) {
             foreach (var node in row) {
-                if (node.type == t) {
+                if (node.GetNodeType() == t) {
                     nodes.Add(node);
                     offset += node.empty.transform.position.y;
                 }
@@ -190,7 +190,6 @@ public class WorldGrid : MonoBehaviour
 
     /// <summary>
     /// Iterate over all Nodes and add the 4 neigboard Nodes to the List
-    /// </summary>
     private void registerNeighbors() {
         foreach(var row in world) {
             foreach(var node in row) {
