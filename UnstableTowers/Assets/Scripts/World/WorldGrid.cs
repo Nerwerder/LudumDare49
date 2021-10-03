@@ -110,7 +110,7 @@ public class WorldGrid : MonoBehaviour
         }
     }
 
-    private void generateWorld(List<List<char>> chars) {
+    private void generateWorld(List<List<char>> chars, float heightOffset) {
         int nodeID = 0;
         int zc = 0;
         foreach (var row in chars) {
@@ -123,8 +123,13 @@ public class WorldGrid : MonoBehaviour
                 GameObject empty = new GameObject(zc + "_" + xc);
                 empty.transform.parent = transform;
                 empty.transform.position = new Vector3(zc, 0, xc);
+                //Create the WayPoint
+                GameObject wayPoint = new GameObject("wayPoint" + zc + "_" + xc);
+                wayPoint.transform.parent = empty.transform;
+                wayPoint.transform.position = empty.transform.position + Vector3.up * heightOffset;
                 //Create the Node
-                WorldNode node = new WorldNode(nodeID++, instruction.type, empty, xc, zc);;
+                WorldNode node = empty.AddComponent<WorldNode>();
+                node.initialize(nodeID++, instruction.type, empty, wayPoint, xc, zc);
                 //Add the Block and|or structure
                 if (instruction.ground) { node.ground = Instantiate(instruction.ground, empty.transform); }
                 if (instruction.structure) { node.structure = Instantiate(instruction.structure, empty.transform); }
@@ -202,10 +207,11 @@ public class WorldGrid : MonoBehaviour
     /// </summary>
     /// <param name="s">Input String containing multiple lines of known symbols</param>
     /// <param name="y">Maximum/Minimum y offset</param>
+    /// <param name="h">Height offset for the waypoints</param>
     /// <param name="e">Extension, how many rows to create for every 'GGGGGG' row</param>
-    public void generateGridFromString(string s, float y, int e) {
+    public void generateGridFromString(string s, float y, float h, int e) {
         var chars = getGeneratedWorldChars(s, e);
-        generateWorld(chars);
+        generateWorld(chars, h);
         offsetWorld(y);
         unifyOffset(NodeType.Water, 0.2f);
         unifyOffset(NodeType.Reactor);
