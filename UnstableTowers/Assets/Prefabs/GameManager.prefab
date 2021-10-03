@@ -49,10 +49,13 @@ MonoBehaviour:
     cost: 2
   enemyParent: {fileID: 1832603389}
   instantFirstWave: 1
-  timeBetweenWaves: 15
-  timeMultiplier: 1.1
+  timeBetweenWaves: 5
+  timeMultiplier: 1
+  minTime: 2
   pointsPerWave: 15
-  pointMultiplier: 1.2
+  pointMultiplier: 1.1
+  maxPoints: 100
+  spawnTimer: 0
 --- !u!1 &1832603389
 GameObject:
   m_ObjectHideFlags: 0
@@ -219,6 +222,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   worldGenInstruction: {fileID: 4900000, guid: b9adcf9192ae07d4fa34e612279f6e14, type: 3}
   yOffset: 0.07
+  wayPointYOffset: 0.9
   expansion: 16
   instructions:
   - letter: 48

@@ -19,8 +19,10 @@ public class EnemyManager : MonoBehaviour
     public bool instantFirstWave;
     public float timeBetweenWaves;
     public float timeMultiplier;
+    public float minTime;
     public float pointsPerWave;
     public float pointMultiplier;
+    public float maxPoints;
 
     public float spawnTimer = 0f;
 
@@ -68,7 +70,13 @@ public class EnemyManager : MonoBehaviour
         if (spawnTimer <= 0f) {
             spawnEnemies();
             timeBetweenWaves *= timeMultiplier;
+            if (timeBetweenWaves < minTime) {
+                timeBetweenWaves = minTime;
+            }
             pointsPerWave *= pointMultiplier;
+            if (pointsPerWave > maxPoints) {
+                pointsPerWave = maxPoints;
+            }
             spawnTimer = timeBetweenWaves;
         }
     }

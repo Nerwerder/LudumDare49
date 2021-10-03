@@ -128,7 +128,8 @@ public class WorldGrid : MonoBehaviour
                 wayPoint.transform.parent = empty.transform;
                 wayPoint.transform.position = empty.transform.position + Vector3.up * heightOffset;
                 //Create the Node
-                WorldNode node = new WorldNode(nodeID++, instruction.type, empty, wayPoint, xc, zc);;
+                WorldNode node = empty.AddComponent<WorldNode>();
+                node.initialize(nodeID++, instruction.type, empty, wayPoint, xc, zc);
                 //Add the Block and|or structure
                 if (instruction.ground) { node.ground = Instantiate(instruction.ground, empty.transform); }
                 if (instruction.structure) { node.structure = Instantiate(instruction.structure, empty.transform); }
