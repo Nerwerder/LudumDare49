@@ -35,6 +35,13 @@ public class WorldPathfinder : MonoBehaviour
         }
     }
 
+    private WorldManager worldManager;
+
+    private void Start() {
+        worldManager = FindObjectOfType<WorldManager>();
+        Assert.IsNotNull(worldManager);
+    }
+
     private List<WorldNode> AStar(WorldNode start, WorldNode end) {
         //A*
         List <WorldNode> ret = new List<WorldNode>();
@@ -71,7 +78,7 @@ public class WorldPathfinder : MonoBehaviour
         var nodes = AStar(start, end);
         if(nodes.Count > 0) {
             //Listener: Path knows Pathfinder so it can ask for a update if something changes
-            WorldPath path = new WorldPath(this);
+            WorldPath path = new WorldPath(worldManager, this);
             path.Prepare(nodes);
             return path;
         }

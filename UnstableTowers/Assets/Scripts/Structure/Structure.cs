@@ -5,4 +5,7 @@ using UnityEngine;
 public class Structure : MonoBehaviour
 {
     public int hp;
+    public void Attack(int dmg) {
+        hp -= dmg;
+    }
 }

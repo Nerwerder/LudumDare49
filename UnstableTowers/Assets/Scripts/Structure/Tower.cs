@@ -6,4 +6,5 @@ public class Tower : Structure
 {
     public float range;
     public float damage;
+    public int cost;
 }

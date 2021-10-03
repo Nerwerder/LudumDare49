@@ -8,13 +8,21 @@ public class WorldPath
     public List<WorldNode> nodes { get; set; }
     private bool prepared;
     private WorldPathfinder pathfinder;
+    private WorldManager worldManager;
 
-    public WorldPath(WorldPathfinder _p) {
+    public WorldPath(WorldManager _m, WorldPathfinder _p) {
         nodes = new List<WorldNode>();
         prepared = false;
         pathfinder = _p;
+        worldManager = _m;
+        worldManager.RegisterPath(this);
         nodes = null;
     }
+
+    ~WorldPath() {
+        worldManager.DeregisterPath(this);
+    }
+
     public WorldNode GetStart() {
         Assert.IsFalse(nodes.Count == 1);
         return nodes[0];
@@ -35,8 +43,8 @@ public class WorldPath
         nodes.Reverse();
         foreach (var p in nodes) {
             p.paths.Add(this);  //Listener
-            p.ground.GetComponent<Renderer>().material.color = Color.cyan;//TODO: Remove
         }
+        worldManager.DrawPath(this);
     }
 
     public void Update() {
@@ -44,7 +52,6 @@ public class WorldPath
         prepared = false;
         foreach (var p in nodes) {
             p.paths.Remove(this);
-            p.ground.GetComponent<Renderer>().material.color = Color.green;//TODO: Remove
         }
         pathfinder.UpdatePath(this); 
     }

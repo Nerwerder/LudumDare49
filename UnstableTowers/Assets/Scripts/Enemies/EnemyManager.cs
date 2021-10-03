@@ -2,19 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Assertions;
+using UnityEngine.UI;
 
 public class EnemyManager : MonoBehaviour
 {
-    [System.Serializable]
-    public struct EnemyInfo
-    {
-        public GameObject prefab;
-        public int cost;
-    }
-
+    public Text waveMessage;
     private List<EnemySpawner> spawners = new List<EnemySpawner>();
+    public List<Enemy> spawnables;
     private List<Enemy> enemies = new List<Enemy>();
-    public List<EnemyInfo> enemyInfos;
 
     public GameObject enemyParent;
     public bool instantFirstWave;
@@ -71,7 +66,7 @@ public class EnemyManager : MonoBehaviour
                 points = Random.Range(0f, tmpPoints);
                 tmpPoints -= points;
             }
-            spawner.SpawnEnemies(enemyParent.transform, points, enemyInfos);
+            spawner.SpawnEnemies(enemyParent.transform, points, spawnables);
         }
     }
 
@@ -86,6 +81,7 @@ public class EnemyManager : MonoBehaviour
 
     void Update() {
         spawnTimer -= Time.deltaTime;
+        waveMessage.text = "NEXT WAVE: " + spawnTimer.ToString("0.");
         if (spawnTimer <= 0f) {
             spawnEnemies();
             timeBetweenWaves *= timeMultiplier;

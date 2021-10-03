@@ -115,3 +115,6 @@ MonoBehaviour:
   maxSpeed: 2.4
   heightOffset: 0
   nodeDistance: 0.5
+  cost: 2
+  loot: 1
+  damage: 4

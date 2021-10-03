@@ -1,13 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Assertions;
 
 public class StructureManager : MonoBehaviour
 {
     //Buildable Structure
-    public GameObject LaserTower;
+    public GameObject laserTower;
+    public GameObject reactor;
 
-    public enum KnownStructures{ None, Laser }
+    private WorldManager worldManager;
+    public enum KnownStructures{ None, Laser, Reactor }
     private KnownStructures preparedStructure = KnownStructures.None;
 
     public void prepareStructure(KnownStructures s) {
@@ -17,21 +20,29 @@ public class StructureManager : MonoBehaviour
     }
 
     public void buildPreparedStructure(WorldNode n) {
-        if(n.GetNodeType() == NodeType.Free && preparedStructure == KnownStructures.Laser) {
-            n.structure = Instantiate(LaserTower, n.empty.transform);
+        if(n.GetNodeType() == NodeType.Free && preparedStructure == KnownStructures.Laser && worldManager.metal> laserTower.GetComponent<LaserTower>().cost) {
+            n.structure = Instantiate(laserTower, n.empty.transform);
             n.SetNodeType(NodeType.Tower);
             prepareStructure(KnownStructures.None);
+            worldManager.metal -= laserTower.GetComponent<LaserTower>().cost;
         }
+    }
+
+
+    public GameObject getStructure(KnownStructures _s) {
+       switch(_s) {
+            case KnownStructures.Reactor:
+                return reactor;
+            default:
+                Assert.IsTrue(false);
+                break;
+        }
+        return null;
     }
 
     void Start()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        worldManager = FindObjectOfType<WorldManager>();
+        Assert.IsNotNull(worldManager);
     }
 }

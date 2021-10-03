@@ -297,4 +297,5 @@ MonoBehaviour:
   hp: 50
   range: 6
   damage: 20
+  cost: 5
   dish: {fileID: 1391720424834467814}

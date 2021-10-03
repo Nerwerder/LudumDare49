@@ -7,7 +7,7 @@ public class EnemySpawner : MonoBehaviour
 {
     public WorldNode node { get; set; }
     private WorldPathfinder pathfinder;
-    private WorldManager manager;
+    private WorldManager worldManager;
     private WorldPath pathToReactor;
     public EnemyManager enemyManager { get; set; }
 
@@ -15,14 +15,14 @@ public class EnemySpawner : MonoBehaviour
         node = _n;
     }
 
-    public void SpawnEnemies(Transform parent, float points, List<EnemyManager.EnemyInfo> info) {
-        List<EnemyManager.EnemyInfo> tmpInfo = new List<EnemyManager.EnemyInfo>(info);
+    public void SpawnEnemies(Transform parent, float points, List<Enemy> spawnables) {
+        List<Enemy> tmpInfo = new List<Enemy>(spawnables);
         //Select Random Enemies to spawn, as long a there are enough Points for it
         while (points > 0 && tmpInfo.Count > 0) {
             var idx = Random.Range(0, tmpInfo.Count);
             if (tmpInfo[idx].cost <= points) {
-                var enemy = Instantiate(info[idx].prefab, parent);
-                enemy.GetComponent<Enemy>().Initialize(enemyManager, pathToReactor);
+                var enemy = Instantiate(spawnables[idx], parent);
+                enemy.GetComponent<Enemy>().Initialize(worldManager, enemyManager, pathToReactor);
                 enemy.transform.position = transform.position + Vector3.up; //TODO: Randomize 
                 points -= tmpInfo[idx].cost;
             } else {
@@ -35,9 +35,9 @@ public class EnemySpawner : MonoBehaviour
     private void Start() {
         pathfinder = FindObjectOfType<WorldPathfinder>();
         Assert.IsNotNull(pathfinder);
-        manager = FindObjectOfType<WorldManager>();
-        Assert.IsNotNull(manager);
+        worldManager = FindObjectOfType<WorldManager>();
+        Assert.IsNotNull(worldManager);
         Assert.IsNotNull(node, "Initialize was not called");
-        pathToReactor = pathfinder.FindPathFromTo(node, manager.reactorNode);
+        pathToReactor = pathfinder.FindPathFromTo(node, worldManager.reactorNode);
     }
 }
