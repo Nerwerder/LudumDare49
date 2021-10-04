@@ -27,16 +27,21 @@ public class WorldManager : MonoBehaviour
 
     //Ratio
     public Text ratioMessage;
-    private float ratio = 1f;
+    public float ratio { get; set; }
     public float maxReactorRatio;
     public float minTowerRatio;
 
     private void Start() {
         towers = new List<Tower>();
+        ratio = 1f;
     }
 
     public bool TowersWorking() {
-        return ratio > minTowerRatio;
+        return (ratio > minTowerRatio);
+    }
+
+    public bool ReactorInDanger() {
+        return (ratio > maxReactorRatio);
     }
 
     public void RegisterPath(WorldPath _p) {
@@ -89,15 +94,16 @@ public class WorldManager : MonoBehaviour
         healthMessage.text =      "Reactor: " + reactor.GetHp();
         temperatureMessage.text = "Tmp    : " + "XXX";
 
-        powerProductionMessage.text = "PP: " + "XXX";
+        powerProductionMessage.text = "PP: " + reactor.power.ToString("0.#");
 
         //Calculate the PowerConsumption
         float pc = 0f;
         foreach(var t in towers) {
             pc += t.currentPowerUsage;
         }
-        powerConsumptionMessage.text = "PC: " + pc;
+        powerConsumptionMessage.text = "PC: " + pc.ToString("0.#");
 
-        ratioMessage.text = "Ratio: " + "XXX";
+        ratio = reactor.power / pc;
+        ratioMessage.text = "Ratio: " + ((ratio == float.NaN || ratio == float.PositiveInfinity) ? ("---") : (ratio.ToString("0.##")));
     }
 }
