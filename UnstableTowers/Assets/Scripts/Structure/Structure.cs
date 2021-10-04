@@ -16,6 +16,10 @@ public class Structure : MonoBehaviour
         }
     }
 
+    public int GetHp() {
+        return hp;
+    }
+
     public void Remove() {
         //Inform the Node
         var node = GetComponentInParent<WorldNode>();
