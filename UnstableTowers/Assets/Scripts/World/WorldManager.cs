@@ -8,6 +8,7 @@ public class WorldManager : MonoBehaviour
 {
     List<WorldPath> paths = new List<WorldPath>();
     Dictionary<WorldPath, LineRenderer> pathRenderer = new Dictionary<WorldPath, LineRenderer>();
+    public Material pathMaterial;
     public Text pointsMessage;
     public Text metalMessage;
     public Text healthMessage;
@@ -65,15 +66,8 @@ public class WorldManager : MonoBehaviour
         GameObject empty = new GameObject("LineRendererParent");
         empty.transform.parent = transform;
         LineRenderer lineRenderer = empty.AddComponent<LineRenderer>();
-        //lineRenderer.material = Material; //TODO
-        lineRenderer.widthMultiplier = 0.2f;
-        float alpha = 1.0f;
-        Gradient gradient = new Gradient();
-        gradient.SetKeys(
-            new GradientColorKey[] { new GradientColorKey(Color.yellow, 0.0f), new GradientColorKey(Color.red, 1.0f) },
-            new GradientAlphaKey[] { new GradientAlphaKey(alpha, 0.0f), new GradientAlphaKey(alpha, 1.0f) }
-        );
-        lineRenderer.colorGradient = gradient;
+        lineRenderer.material = pathMaterial;
+        lineRenderer.widthMultiplier = 0.15f;
         paths.Add(_p);
         pathRenderer.Add(_p, lineRenderer);
         lineRenderer.enabled = false;

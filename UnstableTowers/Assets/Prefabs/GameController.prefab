@@ -147,3 +147,4 @@ MonoBehaviour:
   gunToggle: {fileID: 0}
   mortarToggle: {fileID: 0}
   removeToggle: {fileID: 0}
+  started: 0

@@ -55,8 +55,6 @@ public class GameController : MonoBehaviour
 
     public void StartGame() {
         enemyManager.StartGame();
-        worldManager.TogglePathDrawing(true);
-        pathToggle = true;
     }
 
     public void EndGame() {

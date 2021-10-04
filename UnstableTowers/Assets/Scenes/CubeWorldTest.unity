@@ -403,6 +403,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2115898730 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8458268991356595543, guid: 8547842992c426a4fac54e76f0c4c3d8, type: 3}
+  m_PrefabInstance: {fileID: 8458268990914387736}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1bc25e09ee7e6f248ab01986a85309ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &807184926031555845
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -498,6 +509,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3130851535913929330, guid: 00dc95561fac5b2439aa1fd5c8544d8b, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Target
+      value: 
+      objectReference: {fileID: 2115898730}
+    - target: {fileID: 3130851535913929330, guid: 00dc95561fac5b2439aa1fd5c8544d8b, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
+      value: StartGame
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 00dc95561fac5b2439aa1fd5c8544d8b, type: 3}
 --- !u!1001 &4743790306302334394
@@ -575,6 +594,10 @@ PrefabInstance:
       propertyPath: metalMessage
       value: 
       objectReference: {fileID: 985154275}
+    - target: {fileID: 8825330048043310218, guid: 140c4bedeca65964d85828843f54fd34, type: 3}
+      propertyPath: pathMaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: b2dceee0e3ff86a4db9d6598e6ac2e2c, type: 2}
     - target: {fileID: 8825330048043310218, guid: 140c4bedeca65964d85828843f54fd34, type: 3}
       propertyPath: ratioMessage
       value: 

@@ -51,9 +51,8 @@ MonoBehaviour:
   - {fileID: 8914776996028323465, guid: 82a9cbd7b4022d2488359e9c69b59e8b, type: 3}
   enemyParent: {fileID: 1832603390}
   explosionParent: {fileID: 547576549}
-  instantFirstWave: 0
   timeBetweenWaves: 30
-  timeMultiplier: 1.2
+  timeMultiplier: 1
   minTime: 2
   pointsPerWave: 20
   pointMultiplier: 1.2
@@ -138,7 +137,7 @@ MonoBehaviour:
   reactor: {fileID: 5879453892268532559, guid: 0d97c22378906c043bc01e294c7062c7, type: 3}
   reactor_Control: {fileID: 3034028645501853216, guid: ee426594cef6bde4e81433bb8bcecdee, type: 3}
   reactor_Pump: {fileID: 7578686841710722293, guid: c70bc15066a672146851cb49f26d6a3e, type: 3}
-  recyclingRate: 0.7
+  recyclingRate: 1
 --- !u!1 &1832603389
 GameObject:
   m_ObjectHideFlags: 0
@@ -292,7 +291,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37f7bd67c7df4214cb7432c942fab6ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  drawPaths: 1
+  pathMaterial: {fileID: 2100000, guid: b2dceee0e3ff86a4db9d6598e6ac2e2c, type: 2}
   pointsMessage: {fileID: 0}
   metalMessage: {fileID: 0}
   healthMessage: {fileID: 0}
