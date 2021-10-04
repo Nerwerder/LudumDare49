@@ -218,7 +218,8 @@ MonoBehaviour:
   maxRange: 7
   damage: 3
   coolDown: 0.5
-  coolDownTimer: 0
+  basicPowerConsumption: 2
+  activePowerConsumption: 5
   cannonMount: {fileID: 2307125631964625224}
   gunEffect: {fileID: 1973904762598300491}
 --- !u!1 &8079271085692304608

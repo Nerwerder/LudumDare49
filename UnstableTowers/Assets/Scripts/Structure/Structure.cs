@@ -20,7 +20,7 @@ public class Structure : MonoBehaviour
         return hp;
     }
 
-    public void Remove() {
+    public virtual void Remove() {
         //Inform the Node
         var node = GetComponentInParent<WorldNode>();
         Assert.IsNotNull(node);
