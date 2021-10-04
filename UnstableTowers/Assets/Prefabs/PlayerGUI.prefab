@@ -1856,17 +1856,17 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: "How to play:\r\nClassic Tower Defence with a little twist.\r\n\nUs WASD
-    to move the camera.\r\n\nPressing N will show you the current path of the incoming
-    waves of enemies.\r\n\nYou need to keep the powerplant at a stable point between
-    heat, power consumption and production.\r\nEvery tower you build will add to
-    your power consumption. If your reactor isn\u2019t stable enough to provide your
-    towers with the power they need, they will stop defending you against the incoming
-    waves of enemies that are coming for your reactor building.\r\n\nThere are two
-    factors controlling your reactors behaviour, water from the pump building controlling
-    the heat production and the energy production rate you set at the control panel.\r\nThe
-    values shown on the left of the screen will help you keeping those in check.
-    \r\nOn the right you can find the menu to build defence towers, on defending
-    close range and one doing splash damage at range. \r\n"
+    to move the camera.\r\nPressing N will show you the current path of the incoming
+    waves of enemies.\r\nPress M to mute the music.\n\nYou need to keep the powerplant
+    at a stable point between heat, power consumption and production.\r\nEvery tower
+    you build will add to your power consumption. If your reactor isn\u2019t stable
+    enough to provide your towers with the power they need, they will stop defending
+    you against the incoming waves of enemies that are coming for your reactor building.\r\n\nThere
+    are two factors controlling your reactors behaviour, water from the pump building
+    controlling the heat production and the energy production rate you set at the
+    control panel.\r\nThe values shown on the left of the screen will help you keeping
+    those in check. \r\nOn the right you can find the menu to build defence towers,
+    on defending close range and one doing splash damage at range. \r\n"
 --- !u!1 &4385797747742531139
 GameObject:
   m_ObjectHideFlags: 0
