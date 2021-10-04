@@ -28,7 +28,8 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: -0.7071068, w: 0.7071068}
   m_LocalPosition: {x: -0, y: 0.907, z: 0}
   m_LocalScale: {x: 10.944745, y: 20.901096, z: 13.782127}
-  m_Children: []
+  m_Children:
+  - {fileID: 1973904762598300484}
   m_Father: {fileID: 4695009417032638324}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
@@ -219,6 +220,7 @@ MonoBehaviour:
   coolDown: 0.5
   coolDownTimer: 0
   cannonMount: {fileID: 2307125631964625224}
+  gunEffect: {fileID: 1973904762598300491}
 --- !u!1 &8079271085692304608
 GameObject:
   m_ObjectHideFlags: 0
@@ -300,3 +302,70 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1001 &743833547541359056
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1599972980396734319}
+    m_Modifications:
+    - target: {fileID: 1240204344421724820, guid: 4c55701217164a542aa2d86897b8a88c, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1240204344421724820, guid: 4c55701217164a542aa2d86897b8a88c, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.0455
+      objectReference: {fileID: 0}
+    - target: {fileID: 1240204344421724820, guid: 4c55701217164a542aa2d86897b8a88c, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.00001
+      objectReference: {fileID: 0}
+    - target: {fileID: 1240204344421724820, guid: 4c55701217164a542aa2d86897b8a88c, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.0881
+      objectReference: {fileID: 0}
+    - target: {fileID: 1240204344421724820, guid: 4c55701217164a542aa2d86897b8a88c, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1240204344421724820, guid: 4c55701217164a542aa2d86897b8a88c, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1240204344421724820, guid: 4c55701217164a542aa2d86897b8a88c, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1240204344421724820, guid: 4c55701217164a542aa2d86897b8a88c, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1240204344421724820, guid: 4c55701217164a542aa2d86897b8a88c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: 1240204344421724820, guid: 4c55701217164a542aa2d86897b8a88c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1240204344421724820, guid: 4c55701217164a542aa2d86897b8a88c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1240204344421724827, guid: 4c55701217164a542aa2d86897b8a88c, type: 3}
+      propertyPath: m_Name
+      value: GunTowerEffect
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 4c55701217164a542aa2d86897b8a88c, type: 3}
+--- !u!1 &1973904762598300491 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1240204344421724827, guid: 4c55701217164a542aa2d86897b8a88c, type: 3}
+  m_PrefabInstance: {fileID: 743833547541359056}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1973904762598300484 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1240204344421724820, guid: 4c55701217164a542aa2d86897b8a88c, type: 3}
+  m_PrefabInstance: {fileID: 743833547541359056}
+  m_PrefabAsset: {fileID: 0}
