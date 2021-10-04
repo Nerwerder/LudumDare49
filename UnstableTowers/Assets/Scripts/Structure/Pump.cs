@@ -11,13 +11,16 @@ public class Pump : MonoBehaviour
     private void Start() {
         reactor = FindObjectOfType<Reactor>();
         Assert.IsNotNull(reactor);
+        reactor.water = water;
     }
 
     public void openValve() {
         water *= 1.1f;
+        reactor.water = water;
     }
 
     public void closeValve() {
         water /= 1.1f;
+        reactor.water = water;
     }
 }
