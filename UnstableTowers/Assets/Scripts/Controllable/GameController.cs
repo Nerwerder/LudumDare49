@@ -99,6 +99,10 @@ public class GameController : MonoBehaviour
             worldManager.TogglePathDrawing(pathToggle);
         }
 
+        if(Input.GetKeyDown(KeyCode.Escape)) {
+            EndGame();
+        }
+
         //WASD
         Vector3 cameraMovement = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
         if (cameraMovement.magnitude != 0) {
