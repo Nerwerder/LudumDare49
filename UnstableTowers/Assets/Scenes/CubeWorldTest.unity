@@ -515,7 +515,7 @@ PrefabInstance:
       objectReference: {fileID: 2115898730}
     - target: {fileID: 4988568316920949718, guid: 00dc95561fac5b2439aa1fd5c8544d8b, type: 3}
       propertyPath: m_Text
-      value: "How to play:\r\nClassic Tower Defence with a little twist.\r\n\nUs
+      value: "How to play:\r\nClassic Tower Defence with a little twist.\r\n\nUse
         WASD to move the camera.\r\nPressing N will show you the current path of
         the incoming waves of enemies.\r\nPress M to mute the music.\n\nYou need
         to keep the powerplant at a stable point between heat, power consumption
@@ -527,8 +527,8 @@ PrefabInstance:
         controlling the heat production and the energy production rate you set at
         the control panel.\r\nThe values shown on the left of the screen will help
         you keeping those in check. \r\nOn the right you can find the menu to build
-        defence towers, on defending close range and one doing splash damage at range.
-        \r\n"
+        defence towers, one defending close range and one doing splash damage at
+        range. \r\n"
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 00dc95561fac5b2439aa1fd5c8544d8b, type: 3}
