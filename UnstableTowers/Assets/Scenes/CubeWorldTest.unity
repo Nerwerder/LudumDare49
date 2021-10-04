@@ -513,10 +513,6 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Target
       value: 
       objectReference: {fileID: 2115898730}
-    - target: {fileID: 3130851535913929330, guid: 00dc95561fac5b2439aa1fd5c8544d8b, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
-      value: StartGame
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 00dc95561fac5b2439aa1fd5c8544d8b, type: 3}
 --- !u!1001 &4743790306302334394
@@ -530,14 +526,6 @@ PrefabInstance:
       propertyPath: waveMessage
       value: 
       objectReference: {fileID: 1976921987}
-    - target: {fileID: 339281370, guid: 140c4bedeca65964d85828843f54fd34, type: 3}
-      propertyPath: timeMultiplier
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 670035261, guid: 140c4bedeca65964d85828843f54fd34, type: 3}
-      propertyPath: recyclingRate
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 4743790305103542334, guid: 140c4bedeca65964d85828843f54fd34, type: 3}
       propertyPath: m_Name
       value: GameManager
@@ -595,10 +583,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 985154275}
     - target: {fileID: 8825330048043310218, guid: 140c4bedeca65964d85828843f54fd34, type: 3}
-      propertyPath: pathMaterial
-      value: 
-      objectReference: {fileID: 2100000, guid: b2dceee0e3ff86a4db9d6598e6ac2e2c, type: 2}
-    - target: {fileID: 8825330048043310218, guid: 140c4bedeca65964d85828843f54fd34, type: 3}
       propertyPath: ratioMessage
       value: 
       objectReference: {fileID: 549112256}
@@ -627,10 +611,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2412925822537162702, guid: 8547842992c426a4fac54e76f0c4c3d8, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 8458268991356595541, guid: 8547842992c426a4fac54e76f0c4c3d8, type: 3}
       propertyPath: m_Name
       value: GameController
@@ -677,10 +657,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8458268991356595542, guid: 8547842992c426a4fac54e76f0c4c3d8, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8458268991356595543, guid: 8547842992c426a4fac54e76f0c4c3d8, type: 3}
-      propertyPath: started
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8458268991356595543, guid: 8547842992c426a4fac54e76f0c4c3d8, type: 3}
