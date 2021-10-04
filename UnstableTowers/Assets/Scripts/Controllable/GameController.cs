@@ -13,6 +13,7 @@ public class GameController : MonoBehaviour
     public Toggle gunToggle;
     public Toggle mortarToggle;
     public Toggle removeToggle;
+    public bool started;
     public Toggle curToggle { get; set; }
 
     public void Start() {
@@ -22,6 +23,9 @@ public class GameController : MonoBehaviour
         Assert.IsNotNull(sManager, "GameController: No Manager with StructureManager script found");
         enemyManager = FindObjectOfType<EnemyManager>();
         Assert.IsNotNull(enemyManager, "GameController: No Manager with EnemyManager script found");
+        if(started) {
+            enemyManager.StartGame();
+        }
     }
 
     public void PressButton(string type) {

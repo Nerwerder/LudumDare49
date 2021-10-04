@@ -141,6 +141,8 @@ public class WorldManager : MonoBehaviour
             powerProductionMessage.text = "Production:\n" + reactor.GetPower().ToString("0.#") + "\nPower";
             if(reactor.GetTemperaturOutOfBounds()) {
                 powerProductionMessage.color = reactor.GetTemperaturColor();
+            } else {
+                powerProductionMessage.color = Color.black;
             }
 
             float pc = GetTowerPowerConsumption();
