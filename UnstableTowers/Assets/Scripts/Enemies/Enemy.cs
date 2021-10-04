@@ -33,6 +33,10 @@ public class Enemy : MonoBehaviour
     private bool resolvePathChange = false;     //Resolve the Path Change AFTER the path changed
     private WorldPath tmpPath = null;           //Used to store a temporary local copy of the path
 
+    /// <summary>
+    /// Destroy The Object, deregister the Components and Pay the loot and points
+    /// </summary>
+    /// <param name="byAttack">Was the Enemy kille by an Attack (loot and points)</param>
     private void Die(bool byAttack) {
         if(byAttack) {
             worldManager.metal += loot;
