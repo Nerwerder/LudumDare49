@@ -2,12 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Assertions;
+using UnityEngine.UI;
 
 public class GameController : MonoBehaviour
 {
     private CameraControl pCamera;
     private Player pPlayer;
     private StructureManager sManager;
+
+    public Toggle gunToggle;
+    public Toggle mortarToggle;
+    public Toggle removeToggle;
 
     public void Start() {
         pCamera = FindObjectOfType<CameraControl>();
@@ -59,12 +64,15 @@ public class GameController : MonoBehaviour
         //Numbers
         if(Input.GetKeyDown(KeyCode.Alpha1)) {
             sManager.TogglePlacementMode(StructureManager.PlacementModes.Gun);
+            gunToggle.isOn = true; 
         }
         if (Input.GetKeyDown(KeyCode.Alpha2)) {
             sManager.TogglePlacementMode(StructureManager.PlacementModes.Mortar);
+            mortarToggle.isOn = true;
         }
         if (Input.GetKeyDown(KeyCode.Alpha3)) {
             sManager.TogglePlacementMode(StructureManager.PlacementModes.Remove);
+            removeToggle.isOn = true;
         }
 
         //Right Mouse Key
