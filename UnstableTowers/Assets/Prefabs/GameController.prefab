@@ -98,7 +98,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   smoothSpeed: 20
   zoomFactor: 4
-  maxZoom: 12
+  maxZoom: 8
   minZoom: 3
 --- !u!1 &8458268991356595541
 GameObject:
@@ -145,6 +145,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1bc25e09ee7e6f248ab01986a85309ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gunToggle: {fileID: 0}
+  mortarToggle: {fileID: 0}
+  removeToggle: {fileID: 0}
 --- !u!1001 &8458268990779265080
 PrefabInstance:
   m_ObjectHideFlags: 0
