@@ -436,6 +436,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: -7263066951523306147, guid: 35dd02c0ea22a7e488cbbaa3ac0978a1, type: 3}
     - target: {fileID: 670035261, guid: 140c4bedeca65964d85828843f54fd34, type: 3}
+      propertyPath: laserTower
+      value: 
+      objectReference: {fileID: 5360363947506025934, guid: a3d4b56a81142d24cb4722ded02efe24, type: 3}
+    - target: {fileID: 670035261, guid: 140c4bedeca65964d85828843f54fd34, type: 3}
       propertyPath: reactor_Pump
       value: 
       objectReference: {fileID: 7578686841710722293, guid: c70bc15066a672146851cb49f26d6a3e, type: 3}

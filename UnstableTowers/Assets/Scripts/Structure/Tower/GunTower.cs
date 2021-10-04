@@ -5,7 +5,7 @@ using UnityEngine;
 public class GunTower : Tower
 {
     public GameObject cannonMount; //Rotate arount Y
-    public GameObject cannon;      //Rotate Up and Down
+    //public GameObject cannon;      //Rotate Up and Down
 
     private new void Start() {
         base.Start();
@@ -15,7 +15,8 @@ public class GunTower : Tower
         //TODO: Rotation
         var enemyDirection = (target.transform.position - transform.position);
         enemyDirection.y = 0;
-        cannonMount.transform.up = -enemyDirection.normalized;
+        cannonMount.transform.forward = -enemyDirection.normalized;
+        cannonMount.transform.Rotate(0, 0, -90);
     }
 
     private void AttackTarget() {
