@@ -421,6 +421,34 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1047534738, guid: 00dc95561fac5b2439aa1fd5c8544d8b, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 120
+      objectReference: {fileID: 0}
+    - target: {fileID: 1132672572, guid: 00dc95561fac5b2439aa1fd5c8544d8b, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1132672572, guid: 00dc95561fac5b2439aa1fd5c8544d8b, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1132672572, guid: 00dc95561fac5b2439aa1fd5c8544d8b, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -100
+      objectReference: {fileID: 0}
+    - target: {fileID: 1837978490, guid: 00dc95561fac5b2439aa1fd5c8544d8b, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1837978490, guid: 00dc95561fac5b2439aa1fd5c8544d8b, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1837978490, guid: 00dc95561fac5b2439aa1fd5c8544d8b, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -60
+      objectReference: {fileID: 0}
     - target: {fileID: 807184924943746115, guid: 00dc95561fac5b2439aa1fd5c8544d8b, type: 3}
       propertyPath: m_Name
       value: PlayerGUI
@@ -521,6 +549,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 2115898730}
+    - target: {fileID: 7228741621778974279, guid: 00dc95561fac5b2439aa1fd5c8544d8b, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -150
+      objectReference: {fileID: 0}
     - target: {fileID: 7521692663303441144, guid: 00dc95561fac5b2439aa1fd5c8544d8b, type: 3}
       propertyPath: m_AllowSwitchOff
       value: 1
@@ -538,6 +570,10 @@ PrefabInstance:
       propertyPath: waveMessage
       value: 
       objectReference: {fileID: 1976921987}
+    - target: {fileID: 670035261, guid: 140c4bedeca65964d85828843f54fd34, type: 3}
+      propertyPath: reactor_Control
+      value: 
+      objectReference: {fileID: 3034028645501853216, guid: ee426594cef6bde4e81433bb8bcecdee, type: 3}
     - target: {fileID: 4743790305103542334, guid: 140c4bedeca65964d85828843f54fd34, type: 3}
       propertyPath: m_Name
       value: GameManager
@@ -587,6 +623,14 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8825330048043310218, guid: 140c4bedeca65964d85828843f54fd34, type: 3}
+      propertyPath: tmpMessage
+      value: 
+      objectReference: {fileID: 1132672573}
+    - target: {fileID: 8825330048043310218, guid: 140c4bedeca65964d85828843f54fd34, type: 3}
+      propertyPath: updateTime
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 8825330048043310218, guid: 140c4bedeca65964d85828843f54fd34, type: 3}
       propertyPath: metalMessage
       value: 
       objectReference: {fileID: 985154275}
@@ -599,9 +643,29 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1837978491}
     - target: {fileID: 8825330048043310218, guid: 140c4bedeca65964d85828843f54fd34, type: 3}
+      propertyPath: maxTowerRatio
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8825330048043310218, guid: 140c4bedeca65964d85828843f54fd34, type: 3}
+      propertyPath: minTowerRatio
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8825330048043310218, guid: 140c4bedeca65964d85828843f54fd34, type: 3}
       propertyPath: pointsMessage
       value: 
       objectReference: {fileID: 1874671303}
+    - target: {fileID: 8825330048043310218, guid: 140c4bedeca65964d85828843f54fd34, type: 3}
+      propertyPath: maxReactorRatio
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8825330048043310218, guid: 140c4bedeca65964d85828843f54fd34, type: 3}
+      propertyPath: tmpChangeMessage
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8825330048043310218, guid: 140c4bedeca65964d85828843f54fd34, type: 3}
+      propertyPath: messageUpdateTick
+      value: 0.25
+      objectReference: {fileID: 0}
     - target: {fileID: 8825330048043310218, guid: 140c4bedeca65964d85828843f54fd34, type: 3}
       propertyPath: temperatureMessage
       value: 
