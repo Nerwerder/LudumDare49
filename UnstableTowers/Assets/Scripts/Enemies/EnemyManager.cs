@@ -13,7 +13,6 @@ public class EnemyManager : MonoBehaviour
 
     public Transform enemyParent;
     public Transform explosionParent;
-    public bool instantFirstWave;
     public float timeBetweenWaves;
     public float timeMultiplier;
     public float minTime;
@@ -22,6 +21,7 @@ public class EnemyManager : MonoBehaviour
     public float maxPoints;
 
     public float spawnTimer = 0f;
+    private bool running = false;
 
     public void RegisterSpawner(EnemySpawner s) {
         s.enemyManager = this;
@@ -84,14 +84,18 @@ public class EnemyManager : MonoBehaviour
 
     void Start() {
         Assert.IsNotNull(enemyParent, "EnemyManager: no enemyParent is set");
-        if (!instantFirstWave) {
-            spawnTimer = timeBetweenWaves;
-        } else {
-            spawnTimer = 1f;
-        }
+        spawnTimer = timeBetweenWaves;
+        running = false;
+    }
+
+    public void StartGame() {
+        running = true;
     }
 
     void Update() {
+        if(!running) {
+            return;
+        }
         spawnTimer -= Time.deltaTime;
         waveMessage.text = "NEXT WAVE: " + spawnTimer.ToString("0.");
         if (spawnTimer <= 0f) {
