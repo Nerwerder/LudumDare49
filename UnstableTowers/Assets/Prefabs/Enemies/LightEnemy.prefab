@@ -4908,6 +4908,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6019585621233554474}
+  - component: {fileID: -7263066951523306147}
   m_Layer: 0
   m_Name: LightEnemy
   m_TagString: Untagged
@@ -4923,7 +4924,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6395689359288077968}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.39, y: 0, z: 3.26}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 592735507815246320}
@@ -4932,6 +4933,26 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &-7263066951523306147
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6395689359288077968}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b645da9ee52e2a8459e5d0defd79bd39, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hp: 60
+  minSpeed: 1.6
+  maxSpeed: 2.4
+  heightOffset: 0
+  nodeDistance: 0.5
+  cost: 2
+  loot: 1
+  damage: 4
 --- !u!1 &7402316755459816897
 GameObject:
   m_ObjectHideFlags: 0

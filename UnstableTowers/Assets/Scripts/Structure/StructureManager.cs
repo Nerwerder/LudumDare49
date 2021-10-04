@@ -8,10 +8,12 @@ public class StructureManager : MonoBehaviour
     //Buildable Structure
     public GameObject laserTower;
     public GameObject reactor;
+    public GameObject reactor_Control;
+    public GameObject reactor_Pump;
     public float recyclingRate;
 
     private WorldManager worldManager;
-    public enum KnownStructures{ None, Laser, Reactor }
+    public enum KnownStructures{ None, Laser, Reactor, Reactor_Control, Reactor_Pump }
     public enum PlacementModes { None, Laser, Remove }
     private PlacementModes placementMode = PlacementModes.None;
 
@@ -60,6 +62,10 @@ public class StructureManager : MonoBehaviour
        switch(_s) {
             case KnownStructures.Reactor:
                 return reactor;
+            case KnownStructures.Reactor_Control:
+                return reactor_Control;
+            case KnownStructures.Reactor_Pump:
+                return reactor_Pump;
             default:
                 Assert.IsTrue(false);
                 break;

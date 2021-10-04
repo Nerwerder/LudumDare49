@@ -201,42 +201,60 @@ public class WorldGrid : MonoBehaviour
         }
     }
 
-    /// <summary>
-    /// Add Buildings that need more than one Node
-    /// </summary>
-    private void addOversizedBuildings() {
-        //Add the reactor
+    private List<WorldNode> getAllNodesOfType(NodeType type, int expected) {
         var rNodes = new List<WorldNode>();
-        foreach(var row in world) {
-            foreach(var n in row) {
-                if(n.GetNodeType() == NodeType.Reactor) {
+        foreach (var row in world) {
+            foreach (var n in row) {
+                if (n.GetNodeType() == type) {
                     rNodes.Add(n);
                 }
             }
         }
-        Assert.IsTrue(rNodes.Count == 9);
+        Assert.IsTrue(rNodes.Count == expected);
+        return rNodes;
+    }
 
+    private Vector3 getAverageNodePositions(List<WorldNode> nodes) {
         //Average the Position
-        float aX = 0f;
-        float aZ = 0f;
-        foreach(var n in rNodes) {
-            aX += n.empty.transform.position.x;
-            aZ += n.empty.transform.position.z;
+        Vector3 pos = new Vector3();
+        foreach (var n in nodes) {
+            pos += n.empty.transform.position;
         }
-        aX /= rNodes.Count;
-        aZ /= rNodes.Count;
+        pos /= nodes.Count;
+        return pos;
+    }
 
-        //Get parent Node
-        var s = structureManager.getStructure(StructureManager.KnownStructures.Reactor);
-        var structure = Instantiate(s, rNodes[4].transform);
+    private void buildStructureForNodes(GameObject s, Transform p, List<WorldNode> ns, Vector3 offset) {
+        var structure = Instantiate(s, p);
         structure.transform.position += Vector3.up;
-
-        foreach (var n in rNodes) {
+        structure.transform.position += offset;
+        foreach (var n in ns) {
             n.structure = structure;
         }
+    }
 
+    /// <summary>
+    /// Add Buildings that need more than one Node
+    /// </summary>
+    private void addOversizedBuildings() {
+        //Reactor
+        var rNodes = getAllNodesOfType(NodeType.Reactor, 9);
+        var rs = structureManager.getStructure(StructureManager.KnownStructures.Reactor);
+        buildStructureForNodes(rs, rNodes[4].transform, rNodes, Vector3.zero);
         worldManager.reactorNode = rNodes[1];
-        worldManager.reactor = structure.GetComponent<Reactor>();
+        worldManager.reactor = rs.GetComponent<Reactor>();
+
+        //ControlPanel
+        var cNodes = getAllNodesOfType(NodeType.Reactror_Control, 4);
+        var cs = structureManager.getStructure(StructureManager.KnownStructures.Reactor_Control);
+        var co = getAverageNodePositions(cNodes) - cNodes[0].transform.position;
+        buildStructureForNodes(cs, cNodes[0].transform, cNodes, co);
+
+        //Pump
+        var pNodes = getAllNodesOfType(NodeType.Reactor_Pump, 4);
+        var ps = structureManager.getStructure(StructureManager.KnownStructures.Reactor_Pump);
+        var po = getAverageNodePositions(pNodes) - pNodes[1].transform.position;
+        buildStructureForNodes(ps, pNodes[1].transform, pNodes, po);
     }
 
     /// <summary>
@@ -250,8 +268,10 @@ public class WorldGrid : MonoBehaviour
         var chars = getGeneratedWorldChars(s, e);
         generateWorld(chars, h);
         offsetWorld(y);
-        unifyOffset(NodeType.Water, 0.2f);
+        unifyOffset(NodeType.Water);
         unifyOffset(NodeType.Reactor);
+        unifyOffset(NodeType.Reactror_Control);
+        unifyOffset(NodeType.Reactor_Pump);
         addOversizedBuildings();
         registerNeighbors();
     }

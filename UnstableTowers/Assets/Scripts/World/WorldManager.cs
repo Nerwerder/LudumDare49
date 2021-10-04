@@ -21,7 +21,7 @@ public class WorldManager : MonoBehaviour
         empty.transform.parent = transform;
         LineRenderer lineRenderer = empty.AddComponent<LineRenderer>();
         //lineRenderer.material = Material; //TODO
-        lineRenderer.widthMultiplier = 0.4f;
+        lineRenderer.widthMultiplier = 0.2f;
         float alpha = 1.0f;
         Gradient gradient = new Gradient();
         gradient.SetKeys(

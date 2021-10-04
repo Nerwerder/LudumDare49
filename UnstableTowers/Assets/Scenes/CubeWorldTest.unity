@@ -431,6 +431,22 @@ PrefabInstance:
       propertyPath: waveMessage
       value: 
       objectReference: {fileID: 1976921987}
+    - target: {fileID: 339281370, guid: 140c4bedeca65964d85828843f54fd34, type: 3}
+      propertyPath: spawnables.Array.data[0]
+      value: 
+      objectReference: {fileID: -7263066951523306147, guid: 35dd02c0ea22a7e488cbbaa3ac0978a1, type: 3}
+    - target: {fileID: 670035261, guid: 140c4bedeca65964d85828843f54fd34, type: 3}
+      propertyPath: reactor_Pump
+      value: 
+      objectReference: {fileID: 7578686841710722293, guid: c70bc15066a672146851cb49f26d6a3e, type: 3}
+    - target: {fileID: 670035261, guid: 140c4bedeca65964d85828843f54fd34, type: 3}
+      propertyPath: recyclingRate
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 670035261, guid: 140c4bedeca65964d85828843f54fd34, type: 3}
+      propertyPath: reactor_Control
+      value: 
+      objectReference: {fileID: 5797176659806048256, guid: 736473dcd9bcfb346a3d93677402480c, type: 3}
     - target: {fileID: 4743790305103542334, guid: 140c4bedeca65964d85828843f54fd34, type: 3}
       propertyPath: m_Name
       value: GameManager
@@ -478,6 +494,22 @@ PrefabInstance:
     - target: {fileID: 4743790305103542335, guid: 140c4bedeca65964d85828843f54fd34, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4743790306566733898, guid: 140c4bedeca65964d85828843f54fd34, type: 3}
+      propertyPath: instructions.Array.data[4].ground
+      value: 
+      objectReference: {fileID: 22751195620971399, guid: cd9434a1c8addc4429dcf345e4c350df, type: 3}
+    - target: {fileID: 4743790306566733898, guid: 140c4bedeca65964d85828843f54fd34, type: 3}
+      propertyPath: instructions.Array.data[2].structure
+      value: 
+      objectReference: {fileID: 6515672032027175394, guid: bb51dcfe88555a74495d1f180552656f, type: 3}
+    - target: {fileID: 4743790306566733898, guid: 140c4bedeca65964d85828843f54fd34, type: 3}
+      propertyPath: instructions.Array.data[4].structure
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4743790306566733898, guid: 140c4bedeca65964d85828843f54fd34, type: 3}
+      propertyPath: instructions.Array.data[5].structure
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 8825330048043310218, guid: 140c4bedeca65964d85828843f54fd34, type: 3}
       propertyPath: statusMessage
