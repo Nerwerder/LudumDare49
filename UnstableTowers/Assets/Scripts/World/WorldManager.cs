@@ -8,7 +8,6 @@ public class WorldManager : MonoBehaviour
 {
     List<WorldPath> paths = new List<WorldPath>();
     Dictionary<WorldPath, LineRenderer> pathRenderer = new Dictionary<WorldPath, LineRenderer>();
-    public bool drawPaths;
     public Text pointsMessage;
     public Text metalMessage;
     public Text healthMessage;
@@ -77,6 +76,7 @@ public class WorldManager : MonoBehaviour
         lineRenderer.colorGradient = gradient;
         paths.Add(_p);
         pathRenderer.Add(_p, lineRenderer);
+        lineRenderer.enabled = false;
     }
 
     public void DeregisterPath(WorldPath _p) {
@@ -87,15 +87,19 @@ public class WorldManager : MonoBehaviour
     }
 
     public void DrawPath(WorldPath _p) {
-        if(drawPaths) {
-            Assert.IsTrue(pathRenderer.ContainsKey(_p));
-            var renderer = pathRenderer[_p];
-            renderer.positionCount = _p.nodes.Count;
-            var points = new Vector3[_p.nodes.Count];
-            for (int k = 0; k < _p.nodes.Count; ++k) {
-                points[k] = _p.nodes[k].wayPoint.transform.position;
-            }
-            renderer.SetPositions(points);
+        Assert.IsTrue(pathRenderer.ContainsKey(_p));
+        var renderer = pathRenderer[_p];
+        renderer.positionCount = _p.nodes.Count;
+        var points = new Vector3[_p.nodes.Count];
+        for (int k = 0; k < _p.nodes.Count; ++k) {
+            points[k] = _p.nodes[k].wayPoint.transform.position;
+        }
+        renderer.SetPositions(points);
+    }
+
+    public void TogglePathDrawing(bool t) {
+        foreach(KeyValuePair < WorldPath, LineRenderer> entry in pathRenderer) {
+            entry.Value.enabled = t;
         }
     }
 

@@ -658,7 +658,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8458268991356595543, guid: 8547842992c426a4fac54e76f0c4c3d8, type: 3}
       propertyPath: started
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8458268991356595543, guid: 8547842992c426a4fac54e76f0c4c3d8, type: 3}
       propertyPath: gunToggle
