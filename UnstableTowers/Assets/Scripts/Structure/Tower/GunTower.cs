@@ -5,6 +5,8 @@ using UnityEngine;
 public class GunTower : Tower
 {
     public GameObject cannonMount; //Rotate arount Y
+    public GameObject gunEffect;
+
     //public GameObject cannon;      //Rotate Up and Down
 
     protected override void RotateToTarget() {
@@ -17,7 +19,7 @@ public class GunTower : Tower
 
     protected override void AttackTarget() {
         if(coolDownTimer <= 0) {
-            //TODO: Animation
+            gunEffect.GetComponent<ParticleSystem>().Play();
             if(target.Damage(damage)) {
                 target = null;
             }
