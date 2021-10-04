@@ -90,20 +90,20 @@ public class WorldManager : MonoBehaviour
 
     public void Update() {
         pointsMessage.text =      "Points:  " + points;
-        metalMessage.text  =      "Metal:   " + metal;
-        healthMessage.text =      "Reactor: " + reactor.GetHp();
-        temperatureMessage.text = "Tmp    : " + "XXX";
+        metalMessage.text  =      "Metal:\n" + metal;
+        healthMessage.text =      "Reactor:\n" + reactor.GetHp();
+        temperatureMessage.text = "Tempratur:\n" + "XXX";
 
-        powerProductionMessage.text = "PP: " + reactor.power.ToString("0.#");
+        powerProductionMessage.text = "Production:\n" + reactor.power.ToString("0.#") + "\nPower";
 
         //Calculate the PowerConsumption
         float pc = 0f;
         foreach(var t in towers) {
             pc += t.currentPowerUsage;
         }
-        powerConsumptionMessage.text = "PC: " + pc.ToString("0.#");
+        powerConsumptionMessage.text = "Consumption:\n" + pc.ToString("0.#") + "\nPower";
 
         ratio = reactor.power / pc;
-        ratioMessage.text = "Ratio: " + ((ratio == float.NaN || ratio == float.PositiveInfinity) ? ("---") : (ratio.ToString("0.##")));
+        ratioMessage.text = "Ratio:\n" + ((ratio == float.NaN || ratio == float.PositiveInfinity) ? ("---") : (ratio.ToString("0.##")));
     }
 }
