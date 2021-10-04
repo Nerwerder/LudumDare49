@@ -9,23 +9,28 @@ public class GameController : MonoBehaviour
     private EnemyManager enemyManager;
     private CameraControl pCamera;
     private StructureManager sManager;
+    private WorldManager worldManager;
 
     public Toggle gunToggle;
     public Toggle mortarToggle;
     public Toggle removeToggle;
     public bool started;
     public Toggle curToggle { get; set; }
+    private bool pathToggle;
 
     public void Start() {
         pCamera = FindObjectOfType<CameraControl>();
         Assert.IsNotNull(pCamera, "GameController: No Camera with CameraControl script found");
         sManager = FindObjectOfType<StructureManager>();
         Assert.IsNotNull(sManager, "GameController: No Manager with StructureManager script found");
+        worldManager = FindObjectOfType<WorldManager>();
+        Assert.IsNotNull(worldManager, "GameController: No Manager with WorldManager script found");
         enemyManager = FindObjectOfType<EnemyManager>();
         Assert.IsNotNull(enemyManager, "GameController: No Manager with EnemyManager script found");
         if(started) {
             enemyManager.StartGame();
         }
+        pathToggle = false;
     }
 
     public void PressButton(string type) {
@@ -50,6 +55,8 @@ public class GameController : MonoBehaviour
 
     public void StartGame() {
         enemyManager.StartGame();
+        worldManager.TogglePathDrawing(true);
+        pathToggle = true;
     }
 
     public void EndGame() {
@@ -86,6 +93,12 @@ public class GameController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Alpha3)) {
             curToggle = removeToggle;
             sManager.TogglePlacementMode(StructureManager.PlacementModes.Remove);
+        }
+
+        //N - Toggle Lanes
+        if(Input.GetKeyDown(KeyCode.N)) {
+            pathToggle = !pathToggle;
+            worldManager.TogglePathDrawing(pathToggle);
         }
 
         //WASD
