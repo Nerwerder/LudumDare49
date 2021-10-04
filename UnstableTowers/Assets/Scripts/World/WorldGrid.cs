@@ -224,13 +224,14 @@ public class WorldGrid : MonoBehaviour
         return pos;
     }
 
-    private void buildStructureForNodes(GameObject s, Transform p, List<WorldNode> ns, Vector3 offset) {
+    private GameObject buildStructureForNodes(GameObject s, Transform p, List<WorldNode> ns, Vector3 offset) {
         var structure = Instantiate(s, p);
         structure.transform.position += Vector3.up;
         structure.transform.position += offset;
         foreach (var n in ns) {
             n.structure = structure;
         }
+        return structure;
     }
 
     /// <summary>
@@ -240,9 +241,9 @@ public class WorldGrid : MonoBehaviour
         //Reactor
         var rNodes = getAllNodesOfType(NodeType.Reactor, 9);
         var rs = structureManager.getStructure(StructureManager.KnownStructures.Reactor);
-        buildStructureForNodes(rs, rNodes[4].transform, rNodes, Vector3.zero);
+        var rsi = buildStructureForNodes(rs, rNodes[4].transform, rNodes, Vector3.zero);
         worldManager.reactorNode = rNodes[1];
-        worldManager.reactor = rs.GetComponent<Reactor>();
+        worldManager.reactor = rsi.GetComponent<Reactor>();
 
         //ControlPanel
         var cNodes = getAllNodesOfType(NodeType.Reactror_Control, 4);

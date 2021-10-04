@@ -60,6 +60,6 @@ public class WorldManager : MonoBehaviour
     }
 
     public void Update() {
-        statusMessage.text = "Metal: " + metal + '\n' + "Reactor: " + reactor.hp;
+        statusMessage.text = "Metal: " + metal + '\n' + "Reactor: " + reactor.GetHp();
     }
 }
