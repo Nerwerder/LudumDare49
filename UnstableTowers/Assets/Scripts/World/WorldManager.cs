@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class WorldManager : MonoBehaviour
 {
+    List<WorldPath> paths = new List<WorldPath>();
     Dictionary<WorldPath, LineRenderer> pathRenderer = new Dictionary<WorldPath, LineRenderer>();
     public bool drawPaths;
     public Text statusMessage;
@@ -28,6 +29,7 @@ public class WorldManager : MonoBehaviour
             new GradientAlphaKey[] { new GradientAlphaKey(alpha, 0.0f), new GradientAlphaKey(alpha, 1.0f) }
         );
         lineRenderer.colorGradient = gradient;
+        paths.Add(_p);
         pathRenderer.Add(_p, lineRenderer);
     }
 
@@ -35,19 +37,27 @@ public class WorldManager : MonoBehaviour
         Assert.IsTrue(pathRenderer.ContainsKey(_p));
         Destroy(pathRenderer[_p]);
         pathRenderer.Remove(_p);
+        paths.Remove(_p);
     }
 
     public void DrawPath(WorldPath _p) {
-        Assert.IsTrue(pathRenderer.ContainsKey(_p));
-        var renderer = pathRenderer[_p];
-        renderer.positionCount = _p.nodes.Count;
-        var points = new Vector3[_p.nodes.Count];
-        for(int k = 0; k < _p.nodes.Count; ++k) {
-            points[k] = _p.nodes[k].wayPoint.transform.position;
+        if(drawPaths) {
+            Assert.IsTrue(pathRenderer.ContainsKey(_p));
+            var renderer = pathRenderer[_p];
+            renderer.positionCount = _p.nodes.Count;
+            var points = new Vector3[_p.nodes.Count];
+            for (int k = 0; k < _p.nodes.Count; ++k) {
+                points[k] = _p.nodes[k].wayPoint.transform.position;
+            }
+            renderer.SetPositions(points);
         }
-        renderer.SetPositions(points);
     }
 
+    public void UpdateAllPaths() {
+        foreach(var p in paths) {
+            p.Update();
+        }
+    }
 
     public void Update() {
         statusMessage.text = "Metal: " + metal + '\n' + "Reactor: " + reactor.hp;

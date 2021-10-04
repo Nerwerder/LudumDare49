@@ -34,19 +34,26 @@ public class WorldNode : MonoBehaviour
         z = _z;
     }
     public NodeType GetNodeType() { return type; }
-    public void SetNodeType(NodeType nt) {
-        var oldType = type;
-        type = nt;
+
+    public void AddStructure(NodeType _n, GameObject _s) {
+        Assert.IsTrue(type == NodeType.Free);
+        type = _n;
+        structure = _s;
         //Inform every Path about the change (this Node is not passable anymore)
-        if (oldType == NodeType.Free) {
-            //We create a tmpPaths object, because the paths will unregister themselves in the Update
-            List<WorldPath> tmpPaths = new List<WorldPath>(paths);
-            foreach (var p in tmpPaths) {
-                p.Update();
-            }
+        List<WorldPath> tmpPaths = new List<WorldPath>(paths);
+        foreach (var p in tmpPaths) {
+            p.Update();
         }
-        if (nt != NodeType.Free) {
-            Assert.IsTrue(paths.Count == 0);
-        }
+    }
+
+    public void RemoveStructure() {
+        Assert.IsTrue(type != NodeType.Free);
+        Assert.IsNotNull(structure);
+        type = NodeType.Free;
+        structure = null;
+    }
+
+    public Vector3 GetDirectionToWaypoint(Vector3 _v) {
+        return (wayPoint.transform.position - _v);
     }
 }

@@ -44,17 +44,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7969f7d8fa22e5549aeccb80977a15cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemies:
-  - prefab: {fileID: 7880553152612670045, guid: a4640364087df7345824f6e3234ac1a5, type: 3}
-    cost: 2
+  waveMessage: {fileID: 0}
+  spawnables:
+  - {fileID: 419335261105340361, guid: a4640364087df7345824f6e3234ac1a5, type: 3}
   enemyParent: {fileID: 1832603389}
   instantFirstWave: 1
   timeBetweenWaves: 5
-  timeMultiplier: 1
+  timeMultiplier: 1.2
   minTime: 2
-  pointsPerWave: 15
-  pointMultiplier: 1.1
-  maxPoints: 100
+  pointsPerWave: 20
+  pointMultiplier: 1.2
+  maxPoints: 300
   spawnTimer: 0
 --- !u!1 &670035259
 GameObject:
@@ -99,7 +99,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f9dcf88a99932346aa581cdd7178b34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LaserTower: {fileID: 3268273004472266981, guid: 44d1c7feb18a0a14c986c5792423ca8f, type: 3}
+  laserTower: {fileID: 3268273004472266981, guid: 44d1c7feb18a0a14c986c5792423ca8f, type: 3}
+  reactor: {fileID: 5879453892268532559, guid: 0d97c22378906c043bc01e294c7062c7, type: 3}
+  recyclingRate: 0
 --- !u!1 &1832603389
 GameObject:
   m_ObjectHideFlags: 0
@@ -253,6 +255,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37f7bd67c7df4214cb7432c942fab6ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  drawPaths: 1
+  statusMessage: {fileID: 0}
+  metal: 100
 --- !u!114 &4743790306566733898
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -285,7 +290,7 @@ MonoBehaviour:
   - letter: 82
     type: 4
     ground: {fileID: 3939723971635339815, guid: 2205cdc94d7fef2419d39f627ea289d6, type: 3}
-    structure: {fileID: 6410067387659827287, guid: dac04b48ac12afa488c9fc6cb43a9119, type: 3}
+    structure: {fileID: 0}
   - letter: 80
     type: 5
     ground: {fileID: 3939723971635339815, guid: 2205cdc94d7fef2419d39f627ea289d6, type: 3}
