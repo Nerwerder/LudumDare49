@@ -22,6 +22,5 @@ public class LaserTower : Tower
         if (target.Damage(damage * Time.deltaTime)) {
             target = null;
         }
-        coolDownTimer = 0;
     }
 }

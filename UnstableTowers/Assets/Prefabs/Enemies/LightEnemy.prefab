@@ -4953,6 +4953,7 @@ MonoBehaviour:
   cost: 2
   loot: 1
   damage: 4
+  points: 1
 --- !u!1 &7402316755459816897
 GameObject:
   m_ObjectHideFlags: 0

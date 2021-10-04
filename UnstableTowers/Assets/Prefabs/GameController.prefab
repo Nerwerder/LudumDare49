@@ -98,7 +98,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   smoothSpeed: 20
   zoomFactor: 4
-  maxZoom: 8
+  maxZoom: 12
   minZoom: 3
 --- !u!1 &8458268991356595541
 GameObject:

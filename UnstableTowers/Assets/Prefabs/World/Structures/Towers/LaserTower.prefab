@@ -294,6 +294,10 @@ MonoBehaviour:
   hp: 20
   cost: 5
   removable: 1
-  range: 6
+  minRange: 0
+  maxRange: 0
   damage: 20
+  coolDown: 0
+  basicPowerConsumption: 1
+  activePowerConsumption: 8
   dish: {fileID: 1391720424834467814}

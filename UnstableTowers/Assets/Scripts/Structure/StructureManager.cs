@@ -35,7 +35,9 @@ public class StructureManager : MonoBehaviour
     public void placeTower(WorldNode n, GameObject o) {
         var st = Instantiate(o, n.empty.transform);
         n.AddStructure(NodeType.Tower, st);
-        worldManager.metal -= laserTower.GetComponent<Tower>().cost;
+        var tower = st.GetComponent<Tower>();
+        worldManager.metal -= tower.cost;
+        worldManager.towers.Add(tower);
     }
 
     public bool Work(WorldNode n) {
@@ -63,8 +65,7 @@ public class StructureManager : MonoBehaviour
             case PlacementModes.Remove:
                 if (n.structure != null) {
                     var s = n.structure.GetComponent<Structure>();
-                    Assert.IsNotNull(s);
-                    if(s.removable) {
+                    if(s && s.removable) {
                         worldManager.metal += (int)(s.cost * recyclingRate);
                         s.Remove();
                         worldManager.UpdateAllPaths();

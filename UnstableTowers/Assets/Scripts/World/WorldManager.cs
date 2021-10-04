@@ -9,12 +9,35 @@ public class WorldManager : MonoBehaviour
     List<WorldPath> paths = new List<WorldPath>();
     Dictionary<WorldPath, LineRenderer> pathRenderer = new Dictionary<WorldPath, LineRenderer>();
     public bool drawPaths;
-    public Text statusMessage;
+    public Text pointsMessage;
+    public Text metalMessage;
+    public Text healthMessage;
+    public Text temperatureMessage;
     public int metal;
     public int points;
 
+    //PowerProduction
+    public Text powerProductionMessage;
     public Reactor reactor { get; set; }
     public WorldNode reactorNode { get; set; }
+
+    //PowerConsumption
+    public Text powerConsumptionMessage;
+    public List<Tower> towers {get; set;}
+
+    //Ratio
+    public Text ratioMessage;
+    private float ratio = 1f;
+    public float maxReactorRatio;
+    public float minTowerRatio;
+
+    private void Start() {
+        towers = new List<Tower>();
+    }
+
+    public bool TowersWorking() {
+        return ratio > minTowerRatio;
+    }
 
     public void RegisterPath(WorldPath _p) {
         Assert.IsFalse(pathRenderer.ContainsKey(_p));
@@ -61,6 +84,20 @@ public class WorldManager : MonoBehaviour
     }
 
     public void Update() {
-        statusMessage.text = "Metal: " + metal + '\n' + "Reactor: " + reactor.GetHp();
+        pointsMessage.text =      "Points:  " + points;
+        metalMessage.text  =      "Metal:   " + metal;
+        healthMessage.text =      "Reactor: " + reactor.GetHp();
+        temperatureMessage.text = "Tmp    : " + "XXX";
+
+        powerProductionMessage.text = "PP: " + "XXX";
+
+        //Calculate the PowerConsumption
+        float pc = 0f;
+        foreach(var t in towers) {
+            pc += t.currentPowerUsage;
+        }
+        powerConsumptionMessage.text = "PC: " + pc;
+
+        ratioMessage.text = "Ratio: " + "XXX";
     }
 }
