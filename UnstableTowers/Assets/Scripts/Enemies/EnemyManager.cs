@@ -11,7 +11,8 @@ public class EnemyManager : MonoBehaviour
     public List<Enemy> spawnables;
     private List<Enemy> enemies = new List<Enemy>();
 
-    public GameObject enemyParent;
+    public Transform enemyParent;
+    public Transform explosionParent;
     public bool instantFirstWave;
     public float timeBetweenWaves;
     public float timeMultiplier;
@@ -45,6 +46,16 @@ public class EnemyManager : MonoBehaviour
         return null;
     }
 
+    public List<Enemy> GetEnemiesInRadius(Vector3 _pos, float radius) {
+        List<Enemy> ret = new List<Enemy>();
+        foreach (var e in enemies) {
+            if ((e.transform.position - _pos).magnitude < radius) {
+                ret.Add(e);
+            }
+        }
+        return ret;
+    }
+
     public void spawnEnemies() {
         //How many Spawners will work?
         var activeSpawnerCount = Random.Range(0, (spawners.Count + 1));
@@ -67,7 +78,7 @@ public class EnemyManager : MonoBehaviour
                 points = Random.Range(0f, tmpPoints);
                 tmpPoints -= points;
             }
-            spawner.SpawnEnemies(enemyParent.transform, points, spawnables);
+            spawner.SpawnEnemies(enemyParent, points, spawnables);
         }
     }
 

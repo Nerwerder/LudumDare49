@@ -377,12 +377,14 @@ MonoBehaviour:
   hp: 20
   cost: 10
   removable: 1
-  minRange: 3
-  maxRange: 12
-  damage: 4
-  coolDown: 1
+  minRange: 5
+  maxRange: 16
+  damage: 8
+  coolDown: 4
   coolDownTimer: 0
   mortarBase: {fileID: 922783676350798609}
+  mortarExplosion: {fileID: 5414530671235722652, guid: ffeb429ac57196643ae2c8b9a6796656, type: 3}
+  damageRadius: 4
 --- !u!1 &7173093795148939522
 GameObject:
   m_ObjectHideFlags: 0

@@ -227,6 +227,46 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &547576548
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 547576549}
+  m_Layer: 0
+  m_Name: Explosions
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &547576549
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 547576548}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1706329334}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &793411408 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1832603390, guid: 140c4bedeca65964d85828843f54fd34, type: 3}
+  m_PrefabInstance: {fileID: 4743790306302334394}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1706329334 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 339281369, guid: 140c4bedeca65964d85828843f54fd34, type: 3}
+  m_PrefabInstance: {fileID: 4743790306302334394}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1976921987 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1976921987, guid: 00dc95561fac5b2439aa1fd5c8544d8b, type: 3}
@@ -490,9 +530,17 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 339281370, guid: 140c4bedeca65964d85828843f54fd34, type: 3}
+      propertyPath: enemyParent
+      value: 
+      objectReference: {fileID: 793411408}
+    - target: {fileID: 339281370, guid: 140c4bedeca65964d85828843f54fd34, type: 3}
       propertyPath: waveMessage
       value: 
       objectReference: {fileID: 1976921987}
+    - target: {fileID: 339281370, guid: 140c4bedeca65964d85828843f54fd34, type: 3}
+      propertyPath: explosionParent
+      value: 
+      objectReference: {fileID: 547576549}
     - target: {fileID: 339281370, guid: 140c4bedeca65964d85828843f54fd34, type: 3}
       propertyPath: spawnables.Array.data[0]
       value: 
@@ -500,7 +548,7 @@ PrefabInstance:
     - target: {fileID: 670035261, guid: 140c4bedeca65964d85828843f54fd34, type: 3}
       propertyPath: gunTower
       value: 
-      objectReference: {fileID: 6728020192154181841, guid: f40e013d956c02245a6fd39ad2648473, type: 3}
+      objectReference: {fileID: 5360363947506025934, guid: a3d4b56a81142d24cb4722ded02efe24, type: 3}
     - target: {fileID: 670035261, guid: 140c4bedeca65964d85828843f54fd34, type: 3}
       propertyPath: mortarTower
       value: 
@@ -581,6 +629,10 @@ PrefabInstance:
       propertyPath: instructions.Array.data[5].structure
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 4743790306566733898, guid: 140c4bedeca65964d85828843f54fd34, type: 3}
+      propertyPath: instructions.Array.data[6].structure
+      value: 
+      objectReference: {fileID: 6107731237317574825, guid: cde1183ba3f232b4e9e5a3f0eba56f51, type: 3}
     - target: {fileID: 8825330048043310218, guid: 140c4bedeca65964d85828843f54fd34, type: 3}
       propertyPath: statusMessage
       value: 
@@ -594,6 +646,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 267998976, guid: 8547842992c426a4fac54e76f0c4c3d8, type: 3}
+      propertyPath: maxZoom
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: 8458268991356595541, guid: 8547842992c426a4fac54e76f0c4c3d8, type: 3}
       propertyPath: m_Name
       value: GameController

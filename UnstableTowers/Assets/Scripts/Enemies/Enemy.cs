@@ -26,6 +26,7 @@ public class Enemy : MonoBehaviour
 
     private void Die() {
         worldManager.metal += loot;
+        worldManager.points += points;
         enemyManager.DeRegisterEnemy(this);
         if(path != null) {
             path.enemies.Remove(this);
