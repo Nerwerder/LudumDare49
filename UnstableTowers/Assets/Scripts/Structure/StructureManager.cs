@@ -21,7 +21,6 @@ public class StructureManager : MonoBehaviour
     private PlacementModes placementMode = PlacementModes.None;
 
     public void TogglePlacementMode(PlacementModes s) {
-        Debug.Log("TogglePlacementMode: " + s);
         if(placementMode == s) {
             placementMode = PlacementModes.None;
             gameController.curToggle.isOn = false;

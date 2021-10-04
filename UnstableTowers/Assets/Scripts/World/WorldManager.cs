@@ -113,6 +113,20 @@ public class WorldManager : MonoBehaviour
         return pc;
     }
 
+    private Color GetRatioColor() {
+        Color c = Color.black;
+        if (PowerIsSafe()) {
+            return Color.gray;
+        } else if (ratio > 1.6 || ratio < 0.4) {
+            return Color.red;
+        } else if (RatioInTolerance()) {
+            return Color.green;
+        } else {
+            return Color.yellow;
+        }
+    }
+
+
     public void Update() {
         updateTimer += Time.deltaTime;
         if(updateTimer >= messageUpdateTick) {
@@ -120,25 +134,22 @@ public class WorldManager : MonoBehaviour
             pointsMessage.text    = "Points: " + points;
             metalMessage.text     = "Metal:\n" + metal;
             healthMessage.text    = "Reactor:\n" + reactor.GetHp();
-            tmpMessage.text       = "Tempratur:\n" + reactor.GetTemperature().ToString("0.#");
+
+            tmpMessage.text       = "Temperatur:\n" + reactor.GetTemperature().ToString("0.#");
+            tmpMessage.color = reactor.GetTemperaturColor();
+
             powerProductionMessage.text = "Production:\n" + reactor.GetPower().ToString("0.#") + "\nPower";
+            if(reactor.GetTemperaturOutOfBounds()) {
+                powerProductionMessage.color = reactor.GetTemperaturColor();
+            } else {
+                powerProductionMessage.color = Color.black;
+            }
+
             float pc = GetTowerPowerConsumption();
             powerConsumptionMessage.text = "Consumption:\n" + pc.ToString("0.#") + "\nPower";
             ratio = reactor.GetPower() / pc;
-            //RATIO
-            ratio = reactor.GetPower() / pc;
-            Color c = Color.black;
-            if (PowerIsSafe()) {
-                c = Color.gray;
-            } else if (ratio > 1.6 || ratio < 0.4) {
-                c = Color.red;
-            } else if (RatioInTolerance()) {
-                c = Color.green;
-            } else {
-                c = Color.yellow;
-            }
             ratioMessage.text = "Ratio:\n" + ((ratio == float.NaN || ratio == float.PositiveInfinity) ? ("---") : (ratio.ToString("0.##")));
-            ratioMessage.color = c;
+            ratioMessage.color = GetRatioColor();
             updateTimer = 0f;
         }
     }

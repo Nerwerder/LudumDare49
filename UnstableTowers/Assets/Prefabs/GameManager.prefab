@@ -48,10 +48,11 @@ MonoBehaviour:
   waveMessage: {fileID: 0}
   spawnables:
   - {fileID: -7263066951523306147, guid: 35dd02c0ea22a7e488cbbaa3ac0978a1, type: 3}
+  - {fileID: 8914776996028323465, guid: 82a9cbd7b4022d2488359e9c69b59e8b, type: 3}
   enemyParent: {fileID: 1832603390}
   explosionParent: {fileID: 547576549}
-  instantFirstWave: 1
-  timeBetweenWaves: 5
+  instantFirstWave: 0
+  timeBetweenWaves: 30
   timeMultiplier: 1.2
   minTime: 2
   pointsPerWave: 20
@@ -135,7 +136,7 @@ MonoBehaviour:
   gunTower: {fileID: 5360363947506025934, guid: a3d4b56a81142d24cb4722ded02efe24, type: 3}
   mortarTower: {fileID: 6482776007262025772, guid: 6a10decb25005dc4d88b6f427f4d3b79, type: 3}
   reactor: {fileID: 5879453892268532559, guid: 0d97c22378906c043bc01e294c7062c7, type: 3}
-  reactor_Control: {fileID: 5797176659806048256, guid: 736473dcd9bcfb346a3d93677402480c, type: 3}
+  reactor_Control: {fileID: 3034028645501853216, guid: ee426594cef6bde4e81433bb8bcecdee, type: 3}
   reactor_Pump: {fileID: 7578686841710722293, guid: c70bc15066a672146851cb49f26d6a3e, type: 3}
   recyclingRate: 0.7
 --- !u!1 &1832603389
@@ -295,14 +296,15 @@ MonoBehaviour:
   pointsMessage: {fileID: 0}
   metalMessage: {fileID: 0}
   healthMessage: {fileID: 0}
-  temperatureMessage: {fileID: 0}
+  tmpMessage: {fileID: 0}
   metal: 100
   points: 0
+  messageUpdateTick: 0.25
   powerProductionMessage: {fileID: 0}
   powerConsumptionMessage: {fileID: 0}
   ratioMessage: {fileID: 0}
-  maxReactorRatio: 1.3
-  minTowerRatio: 0.6
+  minTowerRatioTolerance: 0.8
+  maxTowerRatioTolerance: 1.2
 --- !u!114 &4743790306566733898
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -6,22 +6,26 @@ using UnityEngine.UI;
 
 public class GameController : MonoBehaviour
 {
+    private EnemyManager enemyManager;
     private CameraControl pCamera;
-    private Player pPlayer;
     private StructureManager sManager;
 
     public Toggle gunToggle;
     public Toggle mortarToggle;
     public Toggle removeToggle;
+    public bool started;
     public Toggle curToggle { get; set; }
 
     public void Start() {
         pCamera = FindObjectOfType<CameraControl>();
         Assert.IsNotNull(pCamera, "GameController: No Camera with CameraControl script found");
-        pPlayer = FindObjectOfType<Player>();
-        Assert.IsNotNull(pCamera, "GameController: No Player with Player script found");
         sManager = FindObjectOfType<StructureManager>();
         Assert.IsNotNull(sManager, "GameController: No Manager with StructureManager script found");
+        enemyManager = FindObjectOfType<EnemyManager>();
+        Assert.IsNotNull(enemyManager, "GameController: No Manager with EnemyManager script found");
+        if(started) {
+            enemyManager.StartGame();
+        }
     }
 
     public void PressButton(string type) {
@@ -42,6 +46,14 @@ public class GameController : MonoBehaviour
                 Assert.IsTrue(false, "Unknown Type");
                 break;
         }
+    }
+
+    public void StartGame() {
+        enemyManager.StartGame();
+    }
+
+    public void EndGame() {
+        Application.Quit();
     }
 
     private WorldNode RayCastForNode() {
@@ -74,14 +86,6 @@ public class GameController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Alpha3)) {
             curToggle = removeToggle;
             sManager.TogglePlacementMode(StructureManager.PlacementModes.Remove);
-        }
-
-        //Right Mouse Key
-        if (Input.GetMouseButtonDown(1)) {
-            var node = RayCastForNode();
-            if (node != null) {
-                pPlayer.SetTarget(node);
-            }
         }
 
         //WASD

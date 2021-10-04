@@ -49,6 +49,20 @@ public class Reactor : Structure
         return temperature;
     }
 
+    public bool GetTemperaturOutOfBounds() {
+        return (temperature < minTemperature || temperature > maxTemperature);
+    }
+
+    public Color GetTemperaturColor() {
+        if(temperature > maxTemperature) {
+            return Color.red;
+        }
+        if(temperature < minTemperature) {
+            return Color.blue;
+        }
+        return Color.green;
+    }
+
     public bool IsInSafetyMode() {
         return (power <= everythingOKPower);
     }
