@@ -13,6 +13,7 @@ public class GameController : MonoBehaviour
     public Toggle gunToggle;
     public Toggle mortarToggle;
     public Toggle removeToggle;
+    public Toggle curToggle { get; set; }
 
     public void Start() {
         pCamera = FindObjectOfType<CameraControl>();
@@ -63,16 +64,16 @@ public class GameController : MonoBehaviour
 
         //Numbers
         if(Input.GetKeyDown(KeyCode.Alpha1)) {
-            sManager.TogglePlacementMode(StructureManager.PlacementModes.Gun);
-            gunToggle.isOn = true; 
+            curToggle = gunToggle;
+            sManager.TogglePlacementMode(StructureManager.PlacementModes.Gun);  
         }
         if (Input.GetKeyDown(KeyCode.Alpha2)) {
+            curToggle = mortarToggle;
             sManager.TogglePlacementMode(StructureManager.PlacementModes.Mortar);
-            mortarToggle.isOn = true;
         }
         if (Input.GetKeyDown(KeyCode.Alpha3)) {
+            curToggle = removeToggle;
             sManager.TogglePlacementMode(StructureManager.PlacementModes.Remove);
-            removeToggle.isOn = true;
         }
 
         //Right Mouse Key
