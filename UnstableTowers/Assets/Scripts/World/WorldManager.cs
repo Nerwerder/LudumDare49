@@ -31,8 +31,8 @@ public class WorldManager : MonoBehaviour
     //Ratio
     public Text ratioMessage;
     public float ratio { get; set; }
-    public float minTowerRatio;
-    public float maxTowerRatio;
+    public float minTowerRatioTolerance;
+    public float maxTowerRatioTolerance;
 
 
     private void Start() {
@@ -40,8 +40,25 @@ public class WorldManager : MonoBehaviour
         ratio = 1f;
     }
 
-    public bool TowersWorking() {
-        return (ratio > minTowerRatio && ratio < maxTowerRatio);
+    /// <summary>
+    /// Special Mode for the Beginning of the Game (Power <= 25 and ratio >= 0.8)
+    /// </summary>
+    /// <returns></returns>
+    private bool PowerIsSafe() {
+        return (reactor.IsInSafetyMode() && ratio >= minTowerRatioTolerance);
+    }
+
+    private bool RatioInTolerance() {
+        return (ratio > minTowerRatioTolerance && ratio < maxTowerRatioTolerance);
+    }
+
+    public float GetTowerRatio() {
+        if (RatioInTolerance() || PowerIsSafe()) {
+            return 1f;
+        } else {
+            var ts = (1 - Mathf.Abs(ratio - 1f));
+            return (ts > 0f) ? (ts) : (0f);
+        }
     }
 
     public void RegisterPath(WorldPath _p) {
@@ -108,7 +125,20 @@ public class WorldManager : MonoBehaviour
             float pc = GetTowerPowerConsumption();
             powerConsumptionMessage.text = "Consumption:\n" + pc.ToString("0.#") + "\nPower";
             ratio = reactor.GetPower() / pc;
+            //RATIO
+            ratio = reactor.GetPower() / pc;
+            Color c = Color.black;
+            if (PowerIsSafe()) {
+                c = Color.gray;
+            } else if (ratio > 1.6 || ratio < 0.4) {
+                c = Color.red;
+            } else if (RatioInTolerance()) {
+                c = Color.green;
+            } else {
+                c = Color.yellow;
+            }
             ratioMessage.text = "Ratio:\n" + ((ratio == float.NaN || ratio == float.PositiveInfinity) ? ("---") : (ratio.ToString("0.##")));
+            ratioMessage.color = c;
             updateTimer = 0f;
         }
     }

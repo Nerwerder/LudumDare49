@@ -449,6 +449,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -60
       objectReference: {fileID: 0}
+    - target: {fileID: 1837978491, guid: 00dc95561fac5b2439aa1fd5c8544d8b, type: 3}
+      propertyPath: m_Text
+      value: 'Health:'
+      objectReference: {fileID: 0}
     - target: {fileID: 807184924943746115, guid: 00dc95561fac5b2439aa1fd5c8544d8b, type: 3}
       propertyPath: m_Name
       value: PlayerGUI
