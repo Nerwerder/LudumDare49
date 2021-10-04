@@ -35,9 +35,10 @@ public class EnemyManager : MonoBehaviour
         enemies.Remove(e);
     }
 
-    public Enemy GetEnemyInRange(Vector3 _p, float _r) {
+    public Enemy GetEnemyInRange(Vector3 _pos, float _minRange, float _maxRange) {
         foreach(var e in enemies) {
-            if((e.transform.position - _p).magnitude <= _r) {
+            var m = (e.transform.position - _pos).magnitude;
+            if (m > _minRange && m < _maxRange) {
                 return e;
             }
         }

@@ -322,6 +322,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 807184924465451930, guid: 00dc95561fac5b2439aa1fd5c8544d8b, type: 3}
+      propertyPath: m_Text
+      value: 'Gun
+
+        Tower'
+      objectReference: {fileID: 0}
+    - target: {fileID: 807184924810060677, guid: 00dc95561fac5b2439aa1fd5c8544d8b, type: 3}
+      propertyPath: m_Text
+      value: 'Remove
+
+        Tower'
+      objectReference: {fileID: 0}
     - target: {fileID: 807184924943746115, guid: 00dc95561fac5b2439aa1fd5c8544d8b, type: 3}
       propertyPath: m_Name
       value: PlayerGUI
@@ -414,6 +426,56 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 2115898730}
+    - target: {fileID: 807184925394094513, guid: 00dc95561fac5b2439aa1fd5c8544d8b, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: Gun
+      objectReference: {fileID: 0}
+    - target: {fileID: 807184925394094519, guid: 00dc95561fac5b2439aa1fd5c8544d8b, type: 3}
+      propertyPath: m_Name
+      value: Gun_Tower
+      objectReference: {fileID: 0}
+    - target: {fileID: 807184925873449474, guid: 00dc95561fac5b2439aa1fd5c8544d8b, type: 3}
+      propertyPath: m_Name
+      value: Mortar_Tower
+      objectReference: {fileID: 0}
+    - target: {fileID: 807184925873449484, guid: 00dc95561fac5b2439aa1fd5c8544d8b, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 807184925873449484, guid: 00dc95561fac5b2439aa1fd5c8544d8b, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 807184925873449484, guid: 00dc95561fac5b2439aa1fd5c8544d8b, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 2115898730}
+    - target: {fileID: 807184925873449484, guid: 00dc95561fac5b2439aa1fd5c8544d8b, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 807184925873449484, guid: 00dc95561fac5b2439aa1fd5c8544d8b, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: PressButton
+      objectReference: {fileID: 0}
+    - target: {fileID: 807184925873449484, guid: 00dc95561fac5b2439aa1fd5c8544d8b, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: GameController, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 807184925873449484, guid: 00dc95561fac5b2439aa1fd5c8544d8b, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: Mortar
+      objectReference: {fileID: 0}
+    - target: {fileID: 807184925873449484, guid: 00dc95561fac5b2439aa1fd5c8544d8b, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 807184926484882617, guid: 00dc95561fac5b2439aa1fd5c8544d8b, type: 3}
+      propertyPath: m_Text
+      value: 'Mortar
+
+        Tower'
+      objectReference: {fileID: 0}
     - target: {fileID: 807184926500832925, guid: 00dc95561fac5b2439aa1fd5c8544d8b, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -435,6 +497,14 @@ PrefabInstance:
       propertyPath: spawnables.Array.data[0]
       value: 
       objectReference: {fileID: -7263066951523306147, guid: 35dd02c0ea22a7e488cbbaa3ac0978a1, type: 3}
+    - target: {fileID: 670035261, guid: 140c4bedeca65964d85828843f54fd34, type: 3}
+      propertyPath: gunTower
+      value: 
+      objectReference: {fileID: 6728020192154181841, guid: f40e013d956c02245a6fd39ad2648473, type: 3}
+    - target: {fileID: 670035261, guid: 140c4bedeca65964d85828843f54fd34, type: 3}
+      propertyPath: mortarTower
+      value: 
+      objectReference: {fileID: 6482776007262025772, guid: 6a10decb25005dc4d88b6f427f4d3b79, type: 3}
     - target: {fileID: 670035261, guid: 140c4bedeca65964d85828843f54fd34, type: 3}
       propertyPath: reactor_Pump
       value: 

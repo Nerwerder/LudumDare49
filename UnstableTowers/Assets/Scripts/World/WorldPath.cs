@@ -14,7 +14,6 @@ public class WorldPath
     private bool prepared;
     private WorldPathfinder pathfinder;
     private WorldManager worldManager;
-    private bool copy;
 
     public WorldPath(WorldManager _m, WorldPathfinder _p) {
         nodes = null;
@@ -23,7 +22,6 @@ public class WorldPath
         pathfinder = _p;
         worldManager = _m;
         worldManager.RegisterPath(this);
-        copy = false;
     }
 
     /// <summary>
@@ -41,7 +39,6 @@ public class WorldPath
         prepared = _o.prepared;
         pathfinder = null;
         worldManager = null;
-        copy = true;
     }
 
     ~WorldPath() {

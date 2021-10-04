@@ -7,14 +7,16 @@ public class StructureManager : MonoBehaviour
 {
     //Buildable Structure
     public GameObject laserTower;
+    public GameObject gunTower;
+    public GameObject mortarTower;
     public GameObject reactor;
     public GameObject reactor_Control;
     public GameObject reactor_Pump;
     public float recyclingRate;
 
     private WorldManager worldManager;
-    public enum KnownStructures{ None, Laser, Reactor, Reactor_Control, Reactor_Pump }
-    public enum PlacementModes { None, Laser, Remove }
+    public enum KnownStructures{ None, Laser, Gun, Mortar, Reactor, Reactor_Control, Reactor_Pump }
+    public enum PlacementModes { None, Laser, Gun, Mortar, Remove }
     private PlacementModes placementMode = PlacementModes.None;
 
     public void TogglePlacementMode(PlacementModes s) {
@@ -26,16 +28,35 @@ public class StructureManager : MonoBehaviour
         }
     }
 
+    public bool validTowerPlacement(WorldNode n, GameObject o) {
+        return (n.GetNodeType() == NodeType.Free) && (worldManager.metal > o.GetComponent<Tower>().cost);
+    }
+
+    public void placeTower(WorldNode n, GameObject o) {
+        var st = Instantiate(o, n.empty.transform);
+        n.AddStructure(NodeType.Tower, st);
+        worldManager.metal -= laserTower.GetComponent<Tower>().cost;
+    }
+
     public bool Work(WorldNode n) {
         if(placementMode == PlacementModes.None) { return false; }
 
         switch(placementMode) {
             case PlacementModes.Laser:
-                //The Node has to be free and we need enough Metal in the Bank
-                if ((n.GetNodeType() == NodeType.Free) && (worldManager.metal > laserTower.GetComponent<LaserTower>().cost)) {
-                    var s = Instantiate(laserTower, n.empty.transform);
-                    n.AddStructure(NodeType.Tower, s);
-                    worldManager.metal -= laserTower.GetComponent<LaserTower>().cost;
+                if (validTowerPlacement(n, laserTower)) {
+                    placeTower(n, laserTower);
+                    return true;
+                }
+                break;
+            case PlacementModes.Gun:
+                if (validTowerPlacement(n, gunTower)) {
+                    placeTower(n, gunTower);
+                    return true;
+                }
+                break;
+            case PlacementModes.Mortar:
+                if (validTowerPlacement(n, mortarTower)) {
+                    placeTower(n, mortarTower);
                     return true;
                 }
                 break;

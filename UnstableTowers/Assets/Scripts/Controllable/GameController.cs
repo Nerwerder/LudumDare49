@@ -23,6 +23,12 @@ public class GameController : MonoBehaviour
             case "Laser":
                 sManager.TogglePlacementMode(StructureManager.PlacementModes.Laser);
                 break;
+            case "Gun":
+                sManager.TogglePlacementMode(StructureManager.PlacementModes.Gun);
+                break;
+            case "Mortar":
+                sManager.TogglePlacementMode(StructureManager.PlacementModes.Mortar);
+                break;
             case "Remove":
                 sManager.TogglePlacementMode(StructureManager.PlacementModes.Remove);
                 break;
@@ -52,7 +58,10 @@ public class GameController : MonoBehaviour
 
         //Numbers
         if(Input.GetKeyDown(KeyCode.Alpha1)) {
-            sManager.TogglePlacementMode(StructureManager.PlacementModes.Laser);
+            sManager.TogglePlacementMode(StructureManager.PlacementModes.Gun);
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha2)) {
+            sManager.TogglePlacementMode(StructureManager.PlacementModes.Mortar);
         }
         if (Input.GetKeyDown(KeyCode.Alpha3)) {
             sManager.TogglePlacementMode(StructureManager.PlacementModes.Remove);

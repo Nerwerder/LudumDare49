@@ -255,7 +255,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6202980727071521387}
-  - component: {fileID: 8193459972122666868}
+  - component: {fileID: -5305845214068107378}
   m_Layer: 0
   m_Name: GunTower
   m_TagString: Untagged
@@ -271,7 +271,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6728020192154181841}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 6899088441558088479}
@@ -280,7 +280,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8193459972122666868
+--- !u!114 &-5305845214068107378
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -289,14 +289,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 6728020192154181841}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7d12b79c97683a44790db20d3351281a, type: 3}
+  m_Script: {fileID: 11500000, guid: c73428163ce8e394d8b69448c6fe2458, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hp: 0
-  range: 0
-  damage: 0
-  cost: 0
-  dish: {fileID: 0}
+  hp: 30
+  cost: 5
+  removable: 1
+  minRange: 0
+  maxRange: 7
+  damage: 3
+  coolDown: 0.5
+  coolDownTimer: 0
+  cannonMount: {fileID: 2372980995070078636}
+  cannon: {fileID: 3979460931835534423}
 --- !u!1 &7431566196516788735
 GameObject:
   m_ObjectHideFlags: 0

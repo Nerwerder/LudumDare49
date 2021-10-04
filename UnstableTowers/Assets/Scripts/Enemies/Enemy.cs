@@ -15,6 +15,7 @@ public class Enemy : MonoBehaviour
     public float cost;
     public int loot;
     public int damage;
+    public int points;
     private WorldPath path = null;
     private EnemyManager enemyManager;
     private WorldManager worldManager;
@@ -33,7 +34,12 @@ public class Enemy : MonoBehaviour
         Destroy(gameObject);
     }
 
-    public bool Attack(float damage) {
+    /// <summary>
+    /// Damage the Enemy
+    /// </summary>
+    /// <param name="damage">How much Damage to do</param>
+    /// <returns>True if the Enemy was Destroyed</returns>
+    public bool Damage(float damage) {
         hp -= damage;
         if(hp <= 0) {
             Die();
