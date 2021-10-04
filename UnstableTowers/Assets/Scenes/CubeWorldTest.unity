@@ -513,27 +513,6 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Target
       value: 
       objectReference: {fileID: 2115898730}
-    - target: {fileID: 3130851535913929330, guid: 00dc95561fac5b2439aa1fd5c8544d8b, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
-      value: StartGame
-      objectReference: {fileID: 0}
-    - target: {fileID: 4988568316920949718, guid: 00dc95561fac5b2439aa1fd5c8544d8b, type: 3}
-      propertyPath: m_Text
-      value: "How to play:\r\nClassic Tower Defence with a little twist.\r\n\nUs
-        WASD to move the camera.\r\nPressing N will show you the current path of
-        the incoming waves of enemies.\r\nPress M to mute the music if it gets to
-        annoying.\n\nYou need to keep the powerplant at a stable point between heat,
-        power consumption and production.\r\nEvery tower you build will add to your
-        power consumption. If your reactor isn\u2019t stable enough to provide your
-        towers with the power they need, they will stop defending you against the
-        incoming waves of enemies that are coming for your reactor building.\r\n\nThere
-        are two factors controlling your reactors behaviour, water from the pump
-        building controlling the heat production and the energy production rate you
-        set at the control panel.\r\nThe values shown on the left of the screen will
-        help you keeping those in check. \r\nOn the right you can find the menu to
-        build defence towers, on defending close range and one doing splash damage
-        at range. \r\n"
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 00dc95561fac5b2439aa1fd5c8544d8b, type: 3}
 --- !u!1001 &4743790306302334394
@@ -547,14 +526,6 @@ PrefabInstance:
       propertyPath: waveMessage
       value: 
       objectReference: {fileID: 1976921987}
-    - target: {fileID: 339281370, guid: 140c4bedeca65964d85828843f54fd34, type: 3}
-      propertyPath: timeMultiplier
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 670035261, guid: 140c4bedeca65964d85828843f54fd34, type: 3}
-      propertyPath: recyclingRate
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 4743790305103542334, guid: 140c4bedeca65964d85828843f54fd34, type: 3}
       propertyPath: m_Name
       value: GameManager
@@ -612,10 +583,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 985154275}
     - target: {fileID: 8825330048043310218, guid: 140c4bedeca65964d85828843f54fd34, type: 3}
-      propertyPath: pathMaterial
-      value: 
-      objectReference: {fileID: 2100000, guid: b2dceee0e3ff86a4db9d6598e6ac2e2c, type: 2}
-    - target: {fileID: 8825330048043310218, guid: 140c4bedeca65964d85828843f54fd34, type: 3}
       propertyPath: ratioMessage
       value: 
       objectReference: {fileID: 549112256}
@@ -644,9 +611,9 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2412925822537162702, guid: 8547842992c426a4fac54e76f0c4c3d8, type: 3}
-      propertyPath: m_IsActive
-      value: 0
+    - target: {fileID: 1807044153, guid: 8547842992c426a4fac54e76f0c4c3d8, type: 3}
+      propertyPath: m_Volume
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 8458268991356595541, guid: 8547842992c426a4fac54e76f0c4c3d8, type: 3}
       propertyPath: m_Name
@@ -694,10 +661,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8458268991356595542, guid: 8547842992c426a4fac54e76f0c4c3d8, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8458268991356595543, guid: 8547842992c426a4fac54e76f0c4c3d8, type: 3}
-      propertyPath: started
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8458268991356595543, guid: 8547842992c426a4fac54e76f0c4c3d8, type: 3}

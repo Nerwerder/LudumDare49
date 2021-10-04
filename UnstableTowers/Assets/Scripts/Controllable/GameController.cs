@@ -17,6 +17,8 @@ public class GameController : MonoBehaviour
     public bool started;
     public Toggle curToggle { get; set; }
     private bool pathToggle;
+    public AudioSource audio;
+    private bool audiotoggle;
 
     public void Start() {
         pCamera = FindObjectOfType<CameraControl>();
@@ -31,6 +33,7 @@ public class GameController : MonoBehaviour
             enemyManager.StartGame();
         }
         pathToggle = false;
+        audiotoggle = true;
     }
 
     public void PressButton(string type) {
@@ -97,6 +100,12 @@ public class GameController : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.N)) {
             pathToggle = !pathToggle;
             worldManager.TogglePathDrawing(pathToggle);
+        }
+
+        //M - Mute Audio
+        if(Input.GetKeyDown(KeyCode.M)) {
+            audiotoggle = !audiotoggle;
+            audio.mute = audiotoggle;
         }
 
         if(Input.GetKeyDown(KeyCode.Escape)) {
