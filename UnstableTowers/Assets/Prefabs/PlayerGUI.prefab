@@ -1812,7 +1812,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: -120, y: -120}
+  m_SizeDelta: {x: -80, y: -80}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1891041805076220882
 CanvasRenderer:
@@ -1844,7 +1844,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 18
+    m_FontSize: 20
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 1
@@ -1855,17 +1855,18 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "How to play:\r\n\nClassic Tower Defence with a little twist.\r\n\nYou
-    need to keep the powerplant at a stable point between heat, power consumption
-    and production.\r\nEvery tower you build will add to your power consumption.
-    If your reactor isn\u2019t stable enough to provide your towers with the power
-    they need, they will stop defending you against the incoming waves of enemies
-    that are coming for your reactor building.\r\n\nThere are two factors controlling
-    your reactors behaviour, water from the pump building controlling the heat production
-    and the energy production rate you set at the control panel.\r\nThe values shown
-    on the left of the screen will help you keeping those in check. \r\nOn the right
-    you can find the menu to build defence towers, on defending close range and one
-    doing splash damage at range. \r\n"
+  m_Text: "How to play:\r\nClassic Tower Defence with a little twist.\r\n\nUs WASD
+    to move the camera.\r\n\nPressing N will show you the current path of the incoming
+    waves of enemies.\r\n\nYou need to keep the powerplant at a stable point between
+    heat, power consumption and production.\r\nEvery tower you build will add to
+    your power consumption. If your reactor isn\u2019t stable enough to provide your
+    towers with the power they need, they will stop defending you against the incoming
+    waves of enemies that are coming for your reactor building.\r\n\nThere are two
+    factors controlling your reactors behaviour, water from the pump building controlling
+    the heat production and the energy production rate you set at the control panel.\r\nThe
+    values shown on the left of the screen will help you keeping those in check.
+    \r\nOn the right you can find the menu to build defence towers, on defending
+    close range and one doing splash damage at range. \r\n"
 --- !u!1 &4385797747742531139
 GameObject:
   m_ObjectHideFlags: 0
