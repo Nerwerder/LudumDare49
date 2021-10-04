@@ -403,17 +403,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2115898730 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8458268991356595543, guid: 8547842992c426a4fac54e76f0c4c3d8, type: 3}
-  m_PrefabInstance: {fileID: 8458268990914387736}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1bc25e09ee7e6f248ab01986a85309ab, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &807184926031555845
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -421,38 +410,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1047534738, guid: 00dc95561fac5b2439aa1fd5c8544d8b, type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 120
-      objectReference: {fileID: 0}
-    - target: {fileID: 1132672572, guid: 00dc95561fac5b2439aa1fd5c8544d8b, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1132672572, guid: 00dc95561fac5b2439aa1fd5c8544d8b, type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1132672572, guid: 00dc95561fac5b2439aa1fd5c8544d8b, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -100
-      objectReference: {fileID: 0}
-    - target: {fileID: 1837978490, guid: 00dc95561fac5b2439aa1fd5c8544d8b, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1837978490, guid: 00dc95561fac5b2439aa1fd5c8544d8b, type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1837978490, guid: 00dc95561fac5b2439aa1fd5c8544d8b, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -60
-      objectReference: {fileID: 0}
-    - target: {fileID: 1837978491, guid: 00dc95561fac5b2439aa1fd5c8544d8b, type: 3}
-      propertyPath: m_Text
-      value: 'Health:'
-      objectReference: {fileID: 0}
     - target: {fileID: 807184924943746115, guid: 00dc95561fac5b2439aa1fd5c8544d8b, type: 3}
       propertyPath: m_Name
       value: PlayerGUI
@@ -541,26 +498,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 807184925394094513, guid: 00dc95561fac5b2439aa1fd5c8544d8b, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 2115898730}
-    - target: {fileID: 807184925873449484, guid: 00dc95561fac5b2439aa1fd5c8544d8b, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 2115898730}
-    - target: {fileID: 807184926500832925, guid: 00dc95561fac5b2439aa1fd5c8544d8b, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 2115898730}
-    - target: {fileID: 7228741621778974279, guid: 00dc95561fac5b2439aa1fd5c8544d8b, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -150
-      objectReference: {fileID: 0}
-    - target: {fileID: 7521692663303441144, guid: 00dc95561fac5b2439aa1fd5c8544d8b, type: 3}
-      propertyPath: m_AllowSwitchOff
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 00dc95561fac5b2439aa1fd5c8544d8b, type: 3}
 --- !u!1001 &4743790306302334394
@@ -574,26 +511,6 @@ PrefabInstance:
       propertyPath: waveMessage
       value: 
       objectReference: {fileID: 1976921987}
-    - target: {fileID: 339281370, guid: 140c4bedeca65964d85828843f54fd34, type: 3}
-      propertyPath: instantFirstWave
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 339281370, guid: 140c4bedeca65964d85828843f54fd34, type: 3}
-      propertyPath: timeBetweenWaves
-      value: 30
-      objectReference: {fileID: 0}
-    - target: {fileID: 339281370, guid: 140c4bedeca65964d85828843f54fd34, type: 3}
-      propertyPath: spawnables.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 339281370, guid: 140c4bedeca65964d85828843f54fd34, type: 3}
-      propertyPath: spawnables.Array.data[1]
-      value: 
-      objectReference: {fileID: 8914776996028323465, guid: 82a9cbd7b4022d2488359e9c69b59e8b, type: 3}
-    - target: {fileID: 670035261, guid: 140c4bedeca65964d85828843f54fd34, type: 3}
-      propertyPath: reactor_Control
-      value: 
-      objectReference: {fileID: 3034028645501853216, guid: ee426594cef6bde4e81433bb8bcecdee, type: 3}
     - target: {fileID: 4743790305103542334, guid: 140c4bedeca65964d85828843f54fd34, type: 3}
       propertyPath: m_Name
       value: GameManager
@@ -647,10 +564,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1132672573}
     - target: {fileID: 8825330048043310218, guid: 140c4bedeca65964d85828843f54fd34, type: 3}
-      propertyPath: updateTime
-      value: 0.25
-      objectReference: {fileID: 0}
-    - target: {fileID: 8825330048043310218, guid: 140c4bedeca65964d85828843f54fd34, type: 3}
       propertyPath: metalMessage
       value: 
       objectReference: {fileID: 985154275}
@@ -663,41 +576,9 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1837978491}
     - target: {fileID: 8825330048043310218, guid: 140c4bedeca65964d85828843f54fd34, type: 3}
-      propertyPath: maxTowerRatio
-      value: 1.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 8825330048043310218, guid: 140c4bedeca65964d85828843f54fd34, type: 3}
-      propertyPath: minTowerRatio
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 8825330048043310218, guid: 140c4bedeca65964d85828843f54fd34, type: 3}
       propertyPath: pointsMessage
       value: 
       objectReference: {fileID: 1874671303}
-    - target: {fileID: 8825330048043310218, guid: 140c4bedeca65964d85828843f54fd34, type: 3}
-      propertyPath: maxReactorRatio
-      value: 1.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 8825330048043310218, guid: 140c4bedeca65964d85828843f54fd34, type: 3}
-      propertyPath: tmpChangeMessage
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 8825330048043310218, guid: 140c4bedeca65964d85828843f54fd34, type: 3}
-      propertyPath: messageUpdateTick
-      value: 0.25
-      objectReference: {fileID: 0}
-    - target: {fileID: 8825330048043310218, guid: 140c4bedeca65964d85828843f54fd34, type: 3}
-      propertyPath: temperatureMessage
-      value: 
-      objectReference: {fileID: 1132672573}
-    - target: {fileID: 8825330048043310218, guid: 140c4bedeca65964d85828843f54fd34, type: 3}
-      propertyPath: maxTowerRatioTolerance
-      value: 1.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 8825330048043310218, guid: 140c4bedeca65964d85828843f54fd34, type: 3}
-      propertyPath: minTowerRatioTolerance
-      value: 0.8
-      objectReference: {fileID: 0}
     - target: {fileID: 8825330048043310218, guid: 140c4bedeca65964d85828843f54fd34, type: 3}
       propertyPath: powerProductionMessage
       value: 
@@ -715,6 +596,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2412925822537162702, guid: 8547842992c426a4fac54e76f0c4c3d8, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8458268991356595541, guid: 8547842992c426a4fac54e76f0c4c3d8, type: 3}
       propertyPath: m_Name
       value: GameController

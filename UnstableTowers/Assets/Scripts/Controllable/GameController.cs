@@ -77,12 +77,12 @@ public class GameController : MonoBehaviour
         }
 
         //Right Mouse Key
-        if (Input.GetMouseButtonDown(1)) {
-            var node = RayCastForNode();
-            if (node != null) {
-                pPlayer.SetTarget(node);
-            }
-        }
+        //if (Input.GetMouseButtonDown(1)) {
+        //    var node = RayCastForNode();
+        //    if (node != null) {
+        //        pPlayer.SetTarget(node);
+        //    }
+        //}
 
         //WASD
         Vector3 cameraMovement = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
