@@ -4,16 +4,13 @@ using UnityEngine;
 
 public class MortarTower : Tower
 {
-    public GameObject rotation;
+    public GameObject mortarBase;
 
-    private new void Start() {
-        base.Start();
+    protected override void RotateToTarget() {
+
     }
 
-    private void Update() {
-        CheckTarget();
-        if(target != null) {
+    protected override void AttackTarget() {
 
-        }
     }
 }

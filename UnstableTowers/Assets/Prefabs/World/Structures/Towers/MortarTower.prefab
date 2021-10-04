@@ -381,7 +381,8 @@ MonoBehaviour:
   maxRange: 12
   damage: 4
   coolDown: 1
-  rotation: {fileID: 0}
+  coolDownTimer: 0
+  mortarBase: {fileID: 922783676350798609}
 --- !u!1 &7173093795148939522
 GameObject:
   m_ObjectHideFlags: 0

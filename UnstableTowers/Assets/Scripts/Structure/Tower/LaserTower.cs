@@ -12,16 +12,16 @@ public class LaserTower : Tower
         Assert.IsNotNull(dish);
     }
 
-    private void Update() {
-        CheckTarget();
-        if(target != null) {
-            //Turn to enemy
-            var enemyDirection = (target.transform.position - transform.position);
-            enemyDirection.y = 0;
-            dish.transform.right = enemyDirection.normalized;
-            if (target.Damage(damage * Time.deltaTime)) {
-                target = null;
-            }
+    protected override void RotateToTarget() {
+        var enemyDirection = (target.transform.position - transform.position);
+        enemyDirection.y = 0;
+        dish.transform.right = enemyDirection.normalized;
+    }
+
+    protected override void AttackTarget() {
+        if (target.Damage(damage * Time.deltaTime)) {
+            target = null;
         }
+        coolDownTimer = 0;
     }
 }
