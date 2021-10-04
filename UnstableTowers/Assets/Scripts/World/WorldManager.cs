@@ -11,6 +11,7 @@ public class WorldManager : MonoBehaviour
     public bool drawPaths;
     public Text statusMessage;
     public int metal;
+    public int points;
 
     public Reactor reactor { get; set; }
     public WorldNode reactorNode { get; set; }

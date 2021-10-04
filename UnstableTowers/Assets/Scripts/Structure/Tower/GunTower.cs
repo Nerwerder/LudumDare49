@@ -8,7 +8,6 @@ public class GunTower : Tower
     //public GameObject cannon;      //Rotate Up and Down
 
     protected override void RotateToTarget() {
-        //TODO: Rotation
         var enemyDirection = (target.transform.position - transform.position);
         enemyDirection.y = 0;
         cannonMount.transform.forward = -enemyDirection.normalized;
