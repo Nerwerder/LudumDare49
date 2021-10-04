@@ -16,12 +16,12 @@ public class Pump : MonoBehaviour
     }
 
     public void openValve() {
-        water *= 1.1f;
+        water *= 1.2f;
         reactor.water = water;
     }
 
     public void closeValve() {
-        water /= 1.1f;
+        water /= 1.2f;
         if(water < minWater) {
             water = minWater;
         }

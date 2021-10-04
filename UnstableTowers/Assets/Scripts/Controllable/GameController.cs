@@ -17,7 +17,7 @@ public class GameController : MonoBehaviour
     public bool started;
     public Toggle curToggle { get; set; }
     private bool pathToggle;
-    public AudioSource audio;
+    public AudioSource gAudio;
     private bool audiotoggle;
 
     public void Start() {
@@ -105,7 +105,7 @@ public class GameController : MonoBehaviour
         //M - Mute Audio
         if(Input.GetKeyDown(KeyCode.M)) {
             audiotoggle = !audiotoggle;
-            audio.mute = audiotoggle;
+            gAudio.mute = audiotoggle;
         }
 
         if(Input.GetKeyDown(KeyCode.Escape)) {

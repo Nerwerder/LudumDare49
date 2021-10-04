@@ -32,7 +32,7 @@ public class EnemySpawner : MonoBehaviour
         coolDownTimer += Time.deltaTime;
         if(coolDownTimer > coolDown) {
             //Select Random Enemies to spawn, as long a there are enough Points for it
-            while ((points > 0) && (tmpInfo.Count > 0)) {
+            if ((points > 0) && (tmpInfo.Count > 0)) {
                 var idx = Random.Range(0, tmpInfo.Count);
                 if (tmpInfo[idx].cost <= points) {
                     var enemy = Instantiate(tmpInfo[idx], spawnParent);

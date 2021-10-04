@@ -55,8 +55,8 @@ MonoBehaviour:
   timeMultiplier: 1
   minTime: 2
   pointsPerWave: 20
-  pointMultiplier: 1.2
-  maxPoints: 300
+  pointMultiplier: 1.3
+  maxPoints: 500
   spawnTimer: 0
 --- !u!1 &547576548
 GameObject:
