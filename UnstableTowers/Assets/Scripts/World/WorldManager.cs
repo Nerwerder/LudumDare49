@@ -12,9 +12,12 @@ public class WorldManager : MonoBehaviour
     public Text pointsMessage;
     public Text metalMessage;
     public Text healthMessage;
-    public Text temperatureMessage;
+    public Text tmpMessage;
     public int metal;
     public int points;
+
+    public float messageUpdateTick;
+    private float updateTimer;
 
     //PowerProduction
     public Text powerProductionMessage;
@@ -28,8 +31,9 @@ public class WorldManager : MonoBehaviour
     //Ratio
     public Text ratioMessage;
     public float ratio { get; set; }
-    public float maxReactorRatio;
     public float minTowerRatio;
+    public float maxTowerRatio;
+
 
     private void Start() {
         towers = new List<Tower>();
@@ -37,11 +41,7 @@ public class WorldManager : MonoBehaviour
     }
 
     public bool TowersWorking() {
-        return (ratio > minTowerRatio);
-    }
-
-    public bool ReactorInDanger() {
-        return (ratio > maxReactorRatio);
+        return (ratio > minTowerRatio && ratio < maxTowerRatio);
     }
 
     public void RegisterPath(WorldPath _p) {
@@ -88,22 +88,28 @@ public class WorldManager : MonoBehaviour
         }
     }
 
-    public void Update() {
-        pointsMessage.text =      "Points:  " + points;
-        metalMessage.text  =      "Metal:   " + metal;
-        healthMessage.text =      "Reactor: " + reactor.GetHp();
-        temperatureMessage.text = "Tmp    : " + "XXX";
-
-        powerProductionMessage.text = "PP: " + reactor.power.ToString("0.#");
-
-        //Calculate the PowerConsumption
+    private float GetTowerPowerConsumption() {
         float pc = 0f;
-        foreach(var t in towers) {
+        foreach (var t in towers) {
             pc += t.currentPowerUsage;
         }
-        powerConsumptionMessage.text = "PC: " + pc.ToString("0.#");
+        return pc;
+    }
 
-        ratio = reactor.power / pc;
-        ratioMessage.text = "Ratio: " + ((ratio == float.NaN || ratio == float.PositiveInfinity) ? ("---") : (ratio.ToString("0.##")));
+    public void Update() {
+        updateTimer += Time.deltaTime;
+        if(updateTimer >= messageUpdateTick) {
+            //Update Messages
+            pointsMessage.text    = "Points:   " + points;
+            metalMessage.text     = "Metal:    " + metal;
+            healthMessage.text    = "Reactor:  " + reactor.GetHp();
+            tmpMessage.text       = "Tmp:      " + reactor.GetTemperature().ToString("0.#");
+            powerProductionMessage.text = "PP: " + reactor.GetPower().ToString("0.#");
+            float pc = GetTowerPowerConsumption();
+            powerConsumptionMessage.text = "PC: " + pc.ToString("0.#");
+            ratio = reactor.GetPower() / pc;
+            ratioMessage.text = "Ratio: " + ((ratio == float.NaN || ratio == float.PositiveInfinity) ? ("---") : (ratio.ToString("0.##")));
+            updateTimer = 0f;
+        }
     }
 }

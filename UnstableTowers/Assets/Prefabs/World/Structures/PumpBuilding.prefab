@@ -740,7 +740,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cbd9b2becc5ef34fb2491b3ba7e4561, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  water: 40
+  water: 20
 --- !u!1 &7953899939780047808
 GameObject:
   m_ObjectHideFlags: 0
