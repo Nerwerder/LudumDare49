@@ -57,7 +57,7 @@ public class Enemy : MonoBehaviour
     public bool Damage(float damage) {
         hp -= damage;
         if(hp <= 0) {
-            Die(false);
+            Die(true);
             return true;
         }
         return false;
@@ -95,7 +95,7 @@ public class Enemy : MonoBehaviour
     private void Attack(WorldNode tn) {
         if(explode) {
             tn.structure.GetComponent<Structure>().Damage(damage);
-            Die(true);
+            Die(false);
         } else {
             coolDownTimer += Time.deltaTime;
             if (coolDownTimer >= coolDown) {
