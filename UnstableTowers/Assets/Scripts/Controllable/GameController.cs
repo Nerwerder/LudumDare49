@@ -21,7 +21,10 @@ public class GameController : MonoBehaviour
     public void PressButton(string type) {
         switch(type) {
             case "Laser":
-                sManager.prepareStructure(StructureManager.KnownStructures.Laser);
+                sManager.TogglePlacementMode(StructureManager.PlacementModes.Laser);
+                break;
+            case "Remove":
+                sManager.TogglePlacementMode(StructureManager.PlacementModes.Remove);
                 break;
             default:
                 Assert.IsTrue(false, "Unknown Type");
@@ -43,13 +46,16 @@ public class GameController : MonoBehaviour
         if(Input.GetMouseButtonDown(0)) {
             var node = RayCastForNode();
             if (node != null) {
-                sManager.buildPreparedStructure(node);
+                sManager.Work(node);
             }
         }
 
         //Numbers
         if(Input.GetKeyDown(KeyCode.Alpha1)) {
-            sManager.prepareStructure(StructureManager.KnownStructures.Laser);
+            sManager.TogglePlacementMode(StructureManager.PlacementModes.Laser);
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha3)) {
+            sManager.TogglePlacementMode(StructureManager.PlacementModes.Remove);
         }
 
         //Right Mouse Key
