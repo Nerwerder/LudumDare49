@@ -48,9 +48,7 @@ public abstract class Tower : Structure
     protected void CalculatePowerconsumption() {
         if (coolDownTimer < coolDown) {
             currentPowerUsage = basicPowerConsumption + activePowerConsumption;
-            if (worldManager.TowersWorking()) {
-                coolDownTimer += Time.deltaTime;
-            }
+            coolDownTimer += Time.deltaTime * worldManager.GetTowerRatio();
         } else {
             currentPowerUsage = basicPowerConsumption;
         }
@@ -62,7 +60,7 @@ public abstract class Tower : Structure
     private void Update() {
         CalculatePowerconsumption();
         if (CheckTarget()) {
-            if (worldManager.TowersWorking()) {
+            if (worldManager.GetTowerRatio() != 0) {
                 RotateToTarget();
             }
             if (coolDownTimer >= coolDown) {

@@ -7,6 +7,7 @@ public class ControlPanel : MonoBehaviour
 {
     private Reactor reactor;
     public float power;
+    public float minPower;
 
     void Start()
     {
@@ -22,6 +23,9 @@ public class ControlPanel : MonoBehaviour
 
     public void PowerDown() {
         power /= 1.1f;
+        if(power < minPower) {
+            power = minPower;
+        }
         reactor.power = power;
     }
 }

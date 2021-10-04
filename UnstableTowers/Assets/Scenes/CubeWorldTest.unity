@@ -570,6 +570,22 @@ PrefabInstance:
       propertyPath: waveMessage
       value: 
       objectReference: {fileID: 1976921987}
+    - target: {fileID: 339281370, guid: 140c4bedeca65964d85828843f54fd34, type: 3}
+      propertyPath: instantFirstWave
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 339281370, guid: 140c4bedeca65964d85828843f54fd34, type: 3}
+      propertyPath: timeBetweenWaves
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 339281370, guid: 140c4bedeca65964d85828843f54fd34, type: 3}
+      propertyPath: spawnables.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 339281370, guid: 140c4bedeca65964d85828843f54fd34, type: 3}
+      propertyPath: spawnables.Array.data[1]
+      value: 
+      objectReference: {fileID: 8914776996028323465, guid: 82a9cbd7b4022d2488359e9c69b59e8b, type: 3}
     - target: {fileID: 670035261, guid: 140c4bedeca65964d85828843f54fd34, type: 3}
       propertyPath: reactor_Control
       value: 
@@ -670,6 +686,14 @@ PrefabInstance:
       propertyPath: temperatureMessage
       value: 
       objectReference: {fileID: 1132672573}
+    - target: {fileID: 8825330048043310218, guid: 140c4bedeca65964d85828843f54fd34, type: 3}
+      propertyPath: maxTowerRatioTolerance
+      value: 1.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8825330048043310218, guid: 140c4bedeca65964d85828843f54fd34, type: 3}
+      propertyPath: minTowerRatioTolerance
+      value: 0.8
+      objectReference: {fileID: 0}
     - target: {fileID: 8825330048043310218, guid: 140c4bedeca65964d85828843f54fd34, type: 3}
       propertyPath: powerProductionMessage
       value: 

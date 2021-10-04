@@ -104,6 +104,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4780711865088084578}
+  - component: {fileID: 8914776996028323465}
   m_Layer: 0
   m_Name: HeavyEnemy
   m_TagString: Untagged
@@ -127,6 +128,29 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8914776996028323465
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5265641107087315160}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83e94bdb0b4845846adeeb397ed4090b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hp: 120
+  minSpeed: 1
+  maxSpeed: 1.5
+  heightOffset: 0
+  nodeDistance: 0.4
+  cost: 4
+  loot: 2
+  explode: 0
+  coolDown: 0
+  damage: 5
+  points: 2
 --- !u!1 &8155922541302222472
 GameObject:
   m_ObjectHideFlags: 0

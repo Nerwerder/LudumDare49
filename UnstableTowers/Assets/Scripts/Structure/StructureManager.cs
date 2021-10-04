@@ -34,7 +34,7 @@ public class StructureManager : MonoBehaviour
     }
 
     public bool validTowerPlacement(WorldNode n, GameObject o) {
-        return (n.GetNodeType() == NodeType.Free) && (worldManager.metal > o.GetComponent<Tower>().cost);
+        return (n.GetNodeType() == NodeType.Free) && (worldManager.metal >= o.GetComponent<Tower>().cost);
     }
 
     public void placeTower(WorldNode n, GameObject o) {

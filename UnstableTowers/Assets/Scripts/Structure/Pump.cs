@@ -7,6 +7,7 @@ public class Pump : MonoBehaviour
 {
     private Reactor reactor;
     public float water;
+    public float minWater;
 
     private void Start() {
         reactor = FindObjectOfType<Reactor>();
@@ -21,6 +22,9 @@ public class Pump : MonoBehaviour
 
     public void closeValve() {
         water /= 1.1f;
+        if(water < minWater) {
+            water = minWater;
+        }
         reactor.water = water;
     }
 }

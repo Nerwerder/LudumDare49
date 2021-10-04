@@ -4952,7 +4952,9 @@ MonoBehaviour:
   nodeDistance: 0.5
   cost: 2
   loot: 1
-  damage: 4
+  explode: 1
+  coolDown: 0
+  damage: 3
   points: 1
 --- !u!1 &7402316755459816897
 GameObject:

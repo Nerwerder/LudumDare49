@@ -381,9 +381,12 @@ MonoBehaviour:
   cost: 0
   removable: 0
   maxTemperature: 200
-  minTemperature: 50
+  extremeTmpMax: 300
+  minTemperature: 60
+  extremeTmpMin: 20
   temperature: 100
   tmpChangeFactor: 2
+  everythingOKPower: 25
 --- !u!1 &6256923165599673466
 GameObject:
   m_ObjectHideFlags: 0

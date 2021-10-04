@@ -14,6 +14,15 @@ public class Enemy : MonoBehaviour
     public float nodeDistance;
     public float cost;
     public int loot;
+    /// <summary>
+    /// Will this Enemy Explode after Attacking (one hit)?
+    /// </summary>
+    public bool explode;
+    /// <summary>
+    /// How much time is required between Attacks (not used for exploding Enemies)
+    /// </summary>
+    public float coolDown;
+    private float coolDownTimer;
     public int damage;
     public int points;
     private WorldPath path = null;
@@ -24,14 +33,15 @@ public class Enemy : MonoBehaviour
     private bool resolvePathChange = false;     //Resolve the Path Change AFTER the path changed
     private WorldPath tmpPath = null;           //Used to store a temporary local copy of the path
 
-    private void Die() {
-        worldManager.metal += loot;
-        worldManager.points += points;
+    private void Die(bool byAttack) {
+        if(byAttack) {
+            worldManager.metal += loot;
+            worldManager.points += points;
+        }
         enemyManager.DeRegisterEnemy(this);
         if(path != null) {
             path.enemies.Remove(this);
         }
-
         Destroy(gameObject);
     }
 
@@ -43,7 +53,7 @@ public class Enemy : MonoBehaviour
     public bool Damage(float damage) {
         hp -= damage;
         if(hp <= 0) {
-            Die();
+            Die(false);
             return true;
         }
         return false;
@@ -78,6 +88,19 @@ public class Enemy : MonoBehaviour
         }
     }
 
+    private void Attack(WorldNode tn) {
+        if(explode) {
+            tn.structure.GetComponent<Structure>().Damage(damage);
+            Die(true);
+        } else {
+            coolDownTimer += Time.deltaTime;
+            if (coolDownTimer >= coolDown) {
+                tn.structure.GetComponent<Structure>().Damage(damage);
+                coolDownTimer = 0f;
+            }
+        }
+    }
+
     private void FollowPath() {
         //Which Path to use (the "old" one or the current)?
         WorldPath pth;
@@ -97,8 +120,7 @@ public class Enemy : MonoBehaviour
         if(direction.magnitude < nodeDistance) {
             //There is a structure
             if(tn.structure != null) {
-                tn.structure.GetComponent<Structure>().Damage(damage);
-                Die();  //TODO: will all Monsterd Die after Attacking?
+                Attack(tn);
                 return;
             } else {
                 //Nothing to do, get the next Node
@@ -124,5 +146,6 @@ public class Enemy : MonoBehaviour
         enemyManager = _e;
         worldManager = _w;
         enemyManager.RegisterEnemy(this);
+        coolDownTimer = 0f;
     }
 }
