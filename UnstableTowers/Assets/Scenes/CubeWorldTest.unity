@@ -570,6 +570,10 @@ PrefabInstance:
       propertyPath: waveMessage
       value: 
       objectReference: {fileID: 1976921987}
+    - target: {fileID: 670035261, guid: 140c4bedeca65964d85828843f54fd34, type: 3}
+      propertyPath: reactor_Control
+      value: 
+      objectReference: {fileID: 3034028645501853216, guid: ee426594cef6bde4e81433bb8bcecdee, type: 3}
     - target: {fileID: 4743790305103542334, guid: 140c4bedeca65964d85828843f54fd34, type: 3}
       propertyPath: m_Name
       value: GameManager
