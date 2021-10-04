@@ -123,6 +123,17 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!114 &35034885 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4430637030383404690, guid: 00dc95561fac5b2439aa1fd5c8544d8b, type: 3}
+  m_PrefabInstance: {fileID: 807184926031555845}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9085046f02f69544eb97fd06b6048fe2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &64848901 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 64848901, guid: 00dc95561fac5b2439aa1fd5c8544d8b, type: 3}
@@ -249,6 +260,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &695202284 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7954799469783129124, guid: 00dc95561fac5b2439aa1fd5c8544d8b, type: 3}
+  m_PrefabInstance: {fileID: 807184926031555845}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9085046f02f69544eb97fd06b6048fe2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &985154275 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 985154275, guid: 00dc95561fac5b2439aa1fd5c8544d8b, type: 3}
@@ -291,6 +313,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1961240401 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6861093239378079406, guid: 00dc95561fac5b2439aa1fd5c8544d8b, type: 3}
+  m_PrefabInstance: {fileID: 807184926031555845}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9085046f02f69544eb97fd06b6048fe2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &1976921987 stripped
@@ -488,6 +521,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 2115898730}
+    - target: {fileID: 7521692663303441144, guid: 00dc95561fac5b2439aa1fd5c8544d8b, type: 3}
+      propertyPath: m_AllowSwitchOff
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 00dc95561fac5b2439aa1fd5c8544d8b, type: 3}
 --- !u!1001 &4743790306302334394
@@ -634,5 +671,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8458268991356595543, guid: 8547842992c426a4fac54e76f0c4c3d8, type: 3}
+      propertyPath: gunToggle
+      value: 
+      objectReference: {fileID: 695202284}
+    - target: {fileID: 8458268991356595543, guid: 8547842992c426a4fac54e76f0c4c3d8, type: 3}
+      propertyPath: mortarToggle
+      value: 
+      objectReference: {fileID: 1961240401}
+    - target: {fileID: 8458268991356595543, guid: 8547842992c426a4fac54e76f0c4c3d8, type: 3}
+      propertyPath: removeToggle
+      value: 
+      objectReference: {fileID: 35034885}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8547842992c426a4fac54e76f0c4c3d8, type: 3}

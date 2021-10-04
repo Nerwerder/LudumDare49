@@ -15,6 +15,7 @@ public class StructureManager : MonoBehaviour
     public float recyclingRate;
 
     private WorldManager worldManager;
+    private GameController gameController;
     public enum KnownStructures{ None, Laser, Gun, Mortar, Reactor, Reactor_Control, Reactor_Pump }
     public enum PlacementModes { None, Laser, Gun, Mortar, Remove }
     private PlacementModes placementMode = PlacementModes.None;
@@ -23,8 +24,12 @@ public class StructureManager : MonoBehaviour
         Debug.Log("TogglePlacementMode: " + s);
         if(placementMode == s) {
             placementMode = PlacementModes.None;
+            gameController.curToggle.isOn = false;
         } else {
             placementMode = s;
+            if(placementMode != PlacementModes.None) {
+                gameController.curToggle.isOn = true;
+            }
         }
     }
 
@@ -99,5 +104,7 @@ public class StructureManager : MonoBehaviour
     {
         worldManager = FindObjectOfType<WorldManager>();
         Assert.IsNotNull(worldManager);
+        gameController = FindObjectOfType<GameController>();
+        Assert.IsNotNull(gameController);
     }
 }
